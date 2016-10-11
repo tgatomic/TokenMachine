@@ -1715,10 +1715,10 @@ END GROUP
 
 .inits          0x08000354       0x28
                 0x08000354                __data_regions_array_start = .
-                0x08000354        0x4 LONG 0x8001630 LOADADDR (.data)
+                0x08000354        0x4 LONG 0x800163c LOADADDR (.data)
                 0x08000358        0x4 LONG 0x20000000 ADDR (.data)
                 0x0800035c        0x4 LONG 0x20000088 (ADDR (.data) + SIZEOF (.data))
-                0x08000360        0x4 LONG 0x8001630 LOADADDR (.data_CCMRAM)
+                0x08000360        0x4 LONG 0x800163c LOADADDR (.data_CCMRAM)
                 0x08000364        0x4 LONG 0x0 ADDR (.data_CCMRAM)
                 0x08000368        0x4 LONG 0x0 (ADDR (.data_CCMRAM) + SIZEOF (.data_CCMRAM))
                 0x0800036c                __data_regions_array_end = .
@@ -1750,7 +1750,7 @@ END GROUP
 .flashtext
  *(.flashtext .flashtext.*)
 
-.text           0x0800037c     0x12b3
+.text           0x0800037c     0x12bf
  *(.text .text.*)
  .text.GPIO_Init
                 0x0800037c      0x128 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
@@ -1815,124 +1815,124 @@ END GROUP
  .text.SysTick_Handler
                 0x08000a08       0x14 ./src/Timer.o
                 0x08000a08                SysTick_Handler
- .text.main     0x08000a1c       0xac ./src/main.o
+ .text.main     0x08000a1c       0xb8 ./src/main.o
                 0x08000a1c                main
- .text.__errno  0x08000ac8        0xc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
-                0x08000ac8                __errno
- .text          0x08000ad4       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
-                0x08000ad4                strlen
+ .text.__errno  0x08000ad4        0xc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x08000ad4                __errno
+ .text          0x08000ae0       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
+                0x08000ae0                strlen
  .text._vsnprintf_r
-                0x08000ae4       0x56 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsnprintf.o)
-                0x08000ae4                _vsniprintf_r
-                0x08000ae4                _vsnprintf_r
- *fill*         0x08000b3a        0x2 
+                0x08000af0       0x56 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x08000af0                _vsniprintf_r
+                0x08000af0                _vsnprintf_r
+ *fill*         0x08000b46        0x2 
  .text.vsnprintf
-                0x08000b3c       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsnprintf.o)
-                0x08000b3c                vsniprintf
-                0x08000b3c                vsnprintf
+                0x08000b48       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsnprintf.o)
+                0x08000b48                vsniprintf
+                0x08000b48                vsnprintf
  .text.__ssputs_r
-                0x08000b58       0xb2 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x08000b58                __ssputs_r
- *fill*         0x08000c0a        0x2 
+                0x08000b64       0xb2 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08000b64                __ssputs_r
+ *fill*         0x08000c16        0x2 
  .text._svfprintf_r
-                0x08000c0c      0x1e8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x08000c0c                _svfiprintf_r
-                0x08000c0c                _svfprintf_r
+                0x08000c18      0x1e8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08000c18                _svfiprintf_r
+                0x08000c18                _svfprintf_r
  .text._printf_common
-                0x08000df4       0xec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x08000df4                _printf_common
+                0x08000e00       0xec c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08000e00                _printf_common
  .text._printf_i
-                0x08000ee0      0x24c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x08000ee0                _printf_i
- .text.memchr   0x0800112c       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
-                0x0800112c                memchr
- .text.memcpy   0x08001148       0x16 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x08001148                memcpy
- .text.memmove  0x0800115e       0x36 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
-                0x0800115e                memmove
- .text._free_r  0x08001194       0x98 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
-                0x08001194                _free_r
+                0x08000eec      0x24c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08000eec                _printf_i
+ .text.memchr   0x08001138       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x08001138                memchr
+ .text.memcpy   0x08001154       0x16 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x08001154                memcpy
+ .text.memmove  0x0800116a       0x36 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+                0x0800116a                memmove
+ .text._free_r  0x080011a0       0x98 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x080011a0                _free_r
  .text._malloc_r
-                0x0800122c       0xbc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x0800122c                _malloc_r
+                0x08001238       0xbc c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x08001238                _malloc_r
  .text._realloc_r
-                0x080012e8       0x4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
-                0x080012e8                _realloc_r
- .text._sbrk_r  0x08001334       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
-                0x08001334                _sbrk_r
+                0x080012f4       0x4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x080012f4                _realloc_r
+ .text._sbrk_r  0x08001340       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x08001340                _sbrk_r
  .text.__malloc_lock
-                0x08001354        0x2 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
-                0x08001354                __malloc_lock
+                0x08001360        0x2 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+                0x08001360                __malloc_lock
  .text.__malloc_unlock
-                0x08001356        0x2 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
-                0x08001356                __malloc_unlock
+                0x08001362        0x2 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
+                0x08001362                __malloc_unlock
  .text._malloc_usable_size_r
-                0x08001358       0x14 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
-                0x08001358                _malloc_usable_size_r
+                0x08001364       0x14 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x08001364                _malloc_usable_size_r
  *(.rodata .rodata.* .constdata .constdata.*)
  .rodata.str1.4
-                0x0800136c       0x31 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
- *fill*         0x0800139d        0x3 
+                0x08001378       0x31 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
+ *fill*         0x080013a9        0x3 
  .rodata.str1.4
-                0x080013a0       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x080013ac       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .rodata.str1.4
-                0x080013d0       0x14 ./system/src/newlib/_exit.o
+                0x080013dc       0x14 ./system/src/newlib/_exit.o
  .rodata.str1.4
-                0x080013e4       0x6b ./system/src/newlib/assert.o
+                0x080013f0       0x6b ./system/src/newlib/assert.o
                                  0x6f (size before relaxing)
- *fill*         0x0800144f        0x1 
+ *fill*         0x0800145b        0x1 
  .rodata.str1.4
-                0x08001450       0x29 ./system/src/diag/Trace.o
+                0x0800145c       0x29 ./system/src/diag/Trace.o
                                  0x2d (size before relaxing)
- *fill*         0x08001479        0x3 
+ *fill*         0x08001485        0x3 
  .rodata.str1.4
-                0x0800147c      0x146 ./system/src/cortexm/exception_handlers.o
- *fill*         0x080015c2        0x2 
+                0x08001488      0x146 ./system/src/cortexm/exception_handlers.o
+ *fill*         0x080015ce        0x2 
  .rodata.str1.4
-                0x080015c4       0x38 ./src/main.o
+                0x080015d0       0x38 ./src/main.o
                                  0x37 (size before relaxing)
  .rodata.str1.1
-                0x080015fc       0x11 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08001608       0x11 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .rodata.str1.1
-                0x0800160d       0x22 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08001619       0x22 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
  *(vtable)
  *(.eh_frame*)
  *(.glue_7)
- .glue_7        0x0800162f        0x0 linker stubs
+ .glue_7        0x0800163b        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0800162f        0x0 linker stubs
+ .glue_7t       0x0800163b        0x0 linker stubs
 
-.vfp11_veneer   0x08001630        0x0
- .vfp11_veneer  0x08001630        0x0 linker stubs
+.vfp11_veneer   0x0800163c        0x0
+ .vfp11_veneer  0x0800163c        0x0 linker stubs
 
-.v4_bx          0x08001630        0x0
- .v4_bx         0x08001630        0x0 linker stubs
+.v4_bx          0x0800163c        0x0
+ .v4_bx         0x0800163c        0x0 linker stubs
 
-.iplt           0x08001630        0x0
- .iplt          0x08001630        0x0 ./system/src/stm32f1-stdperiph/misc.o
+.iplt           0x0800163c        0x0
+ .iplt          0x0800163c        0x0 ./system/src/stm32f1-stdperiph/misc.o
 
-.rel.dyn        0x08001630        0x0
- .rel.iplt      0x08001630        0x0 ./system/src/stm32f1-stdperiph/misc.o
+.rel.dyn        0x0800163c        0x0
+ .rel.iplt      0x0800163c        0x0 ./system/src/stm32f1-stdperiph/misc.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08001630                . = ALIGN (0x4)
-                0x08001630                __exidx_start = .
+                0x0800163c                . = ALIGN (0x4)
+                0x0800163c                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08001630                __exidx_end = .
-                0x08001630                . = ALIGN (0x4)
-                0x08001630                _etext = .
-                0x08001630                __etext = .
+                0x0800163c                __exidx_end = .
+                0x0800163c                . = ALIGN (0x4)
+                0x0800163c                _etext = .
+                0x0800163c                __etext = .
 
-.data_CCMRAM    0x00000000        0x0 load address 0x08001630
+.data_CCMRAM    0x00000000        0x0 load address 0x0800163c
  FILL mask 0xff
  *(.data.CCMRAM .data.CCMRAM.*)
                 0x00000000                . = ALIGN (0x4)
-                0x08001630                _sidata = LOADADDR (.data)
+                0x0800163c                _sidata = LOADADDR (.data)
 
-.data           0x20000000       0x88 load address 0x08001630
+.data           0x20000000       0x88 load address 0x0800163c
  FILL mask 0xff
                 0x20000000                _sdata = .
                 0x20000000                __data_start__ = .
@@ -1958,7 +1958,7 @@ END GROUP
                 0x20000088                _edata = .
                 0x20000088                __data_end__ = .
 
-.igot.plt       0x20000088        0x0 load address 0x080016b8
+.igot.plt       0x20000088        0x0 load address 0x080016c4
  .igot.plt      0x20000088        0x0 ./system/src/stm32f1-stdperiph/misc.o
 
 .bss_CCMRAM     0x00000000        0x0
@@ -2189,7 +2189,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x47b6
+.debug_info     0x00000000     0x47d1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbcb ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .debug_info    0x00000bcb      0xc70 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
@@ -2206,7 +2206,7 @@ END GROUP
  .debug_info    0x0000381a       0xd1 ./system/src/cmsis/vectors_stm32f10x.o
  .debug_info    0x000038eb      0x355 ./src/BlinkLed.o
  .debug_info    0x00003c40      0x1a4 ./src/Timer.o
- .debug_info    0x00003de4      0x9d2 ./src/main.o
+ .debug_info    0x00003de4      0x9ed ./src/main.o
 
 .debug_abbrev   0x00000000     0x177e
  *(.debug_abbrev)
@@ -2227,7 +2227,7 @@ END GROUP
  .debug_abbrev  0x00001298      0x183 ./src/Timer.o
  .debug_abbrev  0x0000141b      0x363 ./src/main.o
 
-.debug_line     0x00000000     0x4892
+.debug_line     0x00000000     0x489e
  *(.debug_line)
  .debug_line    0x00000000      0x8ec ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .debug_line    0x000008ec      0x836 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
@@ -2244,7 +2244,7 @@ END GROUP
  .debug_line    0x00003a4c      0x103 ./system/src/cmsis/vectors_stm32f10x.o
  .debug_line    0x00003b4f      0x352 ./src/BlinkLed.o
  .debug_line    0x00003ea1      0x396 ./src/Timer.o
- .debug_line    0x00004237      0x65b ./src/main.o
+ .debug_line    0x00004237      0x667 ./src/main.o
 
 .debug_frame    0x00000000      0xcfc
  *(.debug_frame)
@@ -2278,7 +2278,7 @@ END GROUP
  .debug_frame   0x00000cac       0x30 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-mlock.o)
  .debug_frame   0x00000cdc       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
 
-.debug_str      0x00000000    0x568f3
+.debug_str      0x00000000    0x5693f
  *(.debug_str)
  .debug_str     0x00000000    0x4e34c ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
                               0x4e521 (size before relaxing)
@@ -2310,10 +2310,10 @@ END GROUP
                               0x4e552 (size before relaxing)
  .debug_str     0x000562f4       0xb2 ./src/Timer.o
                               0x4e32c (size before relaxing)
- .debug_str     0x000563a6      0x54d ./src/main.o
-                              0x5399f (size before relaxing)
+ .debug_str     0x000563a6      0x599 ./src/main.o
+                              0x539bb (size before relaxing)
 
-.debug_loc      0x00000000     0x1c36
+.debug_loc      0x00000000     0x1c49
  *(.debug_loc)
  .debug_loc     0x00000000      0x776 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .debug_loc     0x00000776      0x91f ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
@@ -2326,7 +2326,7 @@ END GROUP
  .debug_loc     0x0000176d      0x2a8 ./system/src/cortexm/exception_handlers.o
  .debug_loc     0x00001a15       0xdf ./system/src/cmsis/system_stm32f10x.o
  .debug_loc     0x00001af4       0x37 ./src/BlinkLed.o
- .debug_loc     0x00001b2b      0x10b ./src/main.o
+ .debug_loc     0x00001b2b      0x11e ./src/main.o
 
 .debug_macinfo
  *(.debug_macinfo)
