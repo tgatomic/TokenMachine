@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="Assembly Source File">
+<includepath>include</includepath>
+<includepath>system/include</includepath>
+<includepath>system/include/cmsis</includepath>
+<includepath>system/include/stm32f1-stdperiph</includepath>
+<includepath>system/include/cmsis/device</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3</includepath>
+<includepath>Middlewares/ST/STM32_USB_Device_Library/Core/Inc</includepath>
+<includepath>Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/include</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS</includepath>
+<includepath>C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include</includepath>
+
+</language>
+<language name="C Source File">
+<includepath>include</includepath>
+<includepath>system/include</includepath>
+<includepath>system/include/cmsis</includepath>
+<includepath>system/include/stm32f1-stdperiph</includepath>
+<includepath>system/include/stm32f1xx</includepath>
+<includepath>system/include/cmsis/device</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3</includepath>
+<includepath>Middlewares/ST/STM32_USB_Device_Library/Core/Inc</includepath>
+<includepath>Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/include</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS</includepath>
+<includepath>C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include</includepath>
+
+</language>
+<language name="C++ Source File">
+<includepath>include</includepath>
+<includepath>system/include</includepath>
+<includepath>system/include/cmsis</includepath>
+<includepath>system/include/stm32f1-stdperiph</includepath>
+<includepath>system/include/stm32f1xx</includepath>
+<includepath>system/include/cmsis/device</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3</includepath>
+<includepath>Middlewares/ST/STM32_USB_Device_Library/Core/Inc</includepath>
+<includepath>Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/include</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS</includepath>
+<includepath>C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include</includepath>
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="Assembly Source File">
+<macro>
+<name>DEBUG</name><value/>
+</macro>
+<macro>
+<name>USE_FULL_ASSERT</name><value/>
+</macro>
+<macro>
+<name>TRACE</name><value/>
+</macro>
+<macro>
+<name>OS_USE_TRACE_SEMIHOSTING_DEBUG</name><value/>
+</macro>
+<macro>
+<name>STM32F10X_MD</name><value/>
+</macro>
+<macro>
+<name>USE_STDPERIPH_DRIVER</name><value/>
+</macro>
+<macro>
+<name>HSE_VALUE</name><value>8000000</value>
+</macro>
+<macro>
+<name>STM32F103xB</name><value/>
+</macro>
+
+</language>
+<language name="C Source File">
+<macro>
+<name>DEBUG</name><value/>
+</macro>
+<macro>
+<name>USE_FULL_ASSERT</name><value/>
+</macro>
+<macro>
+<name>TRACE</name><value/>
+</macro>
+<macro>
+<name>OS_USE_TRACE_SEMIHOSTING_DEBUG</name><value/>
+</macro>
+<macro>
+<name>STM32F10X_MD</name><value/>
+</macro>
+<macro>
+<name>USE_STDPERIPH_DRIVER</name><value/>
+</macro>
+<macro>
+<name>HSE_VALUE</name><value>8000000</value>
+</macro>
+<macro>
+<name>STM32F103xB</name><value/>
+</macro>
+
+</language>
+<language name="C++ Source File">
+<macro>
+<name>DEBUG</name><value/>
+</macro>
+<macro>
+<name>USE_FULL_ASSERT</name><value/>
+</macro>
+<macro>
+<name>TRACE</name><value/>
+</macro>
+<macro>
+<name>OS_USE_TRACE_SEMIHOSTING_DEBUG</name><value/>
+</macro>
+<macro>
+<name>STM32F10X_MD</name><value/>
+</macro>
+<macro>
+<name>USE_STDPERIPH_DRIVER</name><value/>
+</macro>
+<macro>
+<name>HSE_VALUE</name><value>8000000</value>
+</macro>
+<macro>
+<name>STM32F103xB</name><value/>
+</macro>
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+</cdtprojectproperties>

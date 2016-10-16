@@ -84,8 +84,8 @@ main(int argc, char* argv[])
   while (1)
     {
       blinkLed.turnOn();
-      //timer.sleep(seconds== 0 ? Timer::FREQUENCY_HZ : BLINK_ON_TICKS);
-      for(int y = 0; y<200000;y++);
+      // timer.sleep(seconds== 0 ? Timer::FREQUENCY_HZ : BLINK_ON_TICKS);
+      for(int y = 0; y<100000;y++);
       for(int y = 0; y<200000;y++);
       for(int y = 0; y<200000;y++);
 

@@ -1,0 +1,11 @@
+16:30:46 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  29155	    344	   7732	  37231	   916f	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+
+16:30:47 Build Finished (took 901ms)
+

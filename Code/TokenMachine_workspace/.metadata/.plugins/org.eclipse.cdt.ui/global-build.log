@@ -1,0 +1,692 @@
+16:29:11 **** Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_flash_ex.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_flash_ex.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o" "../system/src/stm32f1xx/stm32f1xx_hal_flash_ex.c"
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_flash_ex.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_gpio.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_gpio.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_gpio.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_gpio.o" "../system/src/stm32f1xx/stm32f1xx_hal_gpio.c"
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_gpio.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o" "../system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.c"
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_i2c.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_i2c.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_i2c.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_i2c.o" "../system/src/stm32f1xx/stm32f1xx_hal_i2c.c"
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_i2c.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_pcd.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_pcd.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_pcd.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_pcd.o" "../system/src/stm32f1xx/stm32f1xx_hal_pcd.c"
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_pcd.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o" "../system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.c"
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_pwr.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_pwr.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_pwr.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_pwr.o" "../system/src/stm32f1xx/stm32f1xx_hal_pwr.c"
+../system/src/stm32f1xx/stm32f1xx_hal_pwr.c: In function 'HAL_PWR_EnterSLEEPMode':
+../system/src/stm32f1xx/stm32f1xx_hal_pwr.c:435:38: warning: unused parameter 'Regulator' [-Wunused-parameter]
+ void HAL_PWR_EnterSLEEPMode(uint32_t Regulator, uint8_t SLEEPEntry)
+                                      ^
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_pwr.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_rcc.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_rcc.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_rcc.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_rcc.o" "../system/src/stm32f1xx/stm32f1xx_hal_rcc.c"
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_rcc.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o" "../system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.c"
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_tim.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_tim.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_tim.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_tim.o" "../system/src/stm32f1xx/stm32f1xx_hal_tim.c"
+../system/src/stm32f1xx/stm32f1xx_hal_tim.c: In function 'HAL_TIM_OnePulse_Start':
+../system/src/stm32f1xx/stm32f1xx_hal_tim.c:2070:76: warning: unused parameter 'OutputChannel' [-Wunused-parameter]
+ HAL_StatusTypeDef HAL_TIM_OnePulse_Start(TIM_HandleTypeDef *htim, uint32_t OutputChannel)
+                                                                            ^
+../system/src/stm32f1xx/stm32f1xx_hal_tim.c: In function 'HAL_TIM_OnePulse_Stop':
+../system/src/stm32f1xx/stm32f1xx_hal_tim.c:2103:75: warning: unused parameter 'OutputChannel' [-Wunused-parameter]
+ HAL_StatusTypeDef HAL_TIM_OnePulse_Stop(TIM_HandleTypeDef *htim, uint32_t OutputChannel)
+                                                                           ^
+../system/src/stm32f1xx/stm32f1xx_hal_tim.c: In function 'HAL_TIM_OnePulse_Start_IT':
+../system/src/stm32f1xx/stm32f1xx_hal_tim.c:2136:79: warning: unused parameter 'OutputChannel' [-Wunused-parameter]
+ HAL_StatusTypeDef HAL_TIM_OnePulse_Start_IT(TIM_HandleTypeDef *htim, uint32_t OutputChannel)
+                                                                               ^
+../system/src/stm32f1xx/stm32f1xx_hal_tim.c: In function 'HAL_TIM_OnePulse_Stop_IT':
+../system/src/stm32f1xx/stm32f1xx_hal_tim.c:2175:78: warning: unused parameter 'OutputChannel' [-Wunused-parameter]
+ HAL_StatusTypeDef HAL_TIM_OnePulse_Stop_IT(TIM_HandleTypeDef *htim, uint32_t OutputChannel)
+                                                                              ^
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_tim.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_tim_ex.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_tim_ex.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o" "../system/src/stm32f1xx/stm32f1xx_hal_tim_ex.c"
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_tim_ex.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_hal_uart.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_hal_uart.d" -MT"system/src/stm32f1xx/stm32f1xx_hal_uart.o" -c -o "system/src/stm32f1xx/stm32f1xx_hal_uart.o" "../system/src/stm32f1xx/stm32f1xx_hal_uart.c"
+Finished building: ../system/src/stm32f1xx/stm32f1xx_hal_uart.c
+ 
+Building file: ../system/src/stm32f1xx/stm32f1xx_ll_usb.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/stm32f1xx/stm32f1xx_ll_usb.d" -MT"system/src/stm32f1xx/stm32f1xx_ll_usb.o" -c -o "system/src/stm32f1xx/stm32f1xx_ll_usb.o" "../system/src/stm32f1xx/stm32f1xx_ll_usb.c"
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_CoreInit':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1478:45: warning: unused parameter 'USBx' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_CoreInit(USB_TypeDef *USBx, USB_CfgTypeDef cfg)
+                                             ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1478:66: warning: unused parameter 'cfg' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_CoreInit(USB_TypeDef *USBx, USB_CfgTypeDef cfg)
+                                                                  ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_SetCurrentMode':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1535:51: warning: unused parameter 'USBx' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_SetCurrentMode(USB_TypeDef *USBx , USB_ModeTypeDef mode)
+                                                   ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1535:74: warning: unused parameter 'mode' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_SetCurrentMode(USB_TypeDef *USBx , USB_ModeTypeDef mode)
+                                                                          ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_DevInit':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1552:66: warning: unused parameter 'cfg' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_DevInit (USB_TypeDef *USBx, USB_CfgTypeDef cfg)
+                                                                  ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_FlushTxFifo':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1578:49: warning: unused parameter 'USBx' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_FlushTxFifo (USB_TypeDef *USBx, uint32_t num )
+                                                 ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1578:64: warning: unused parameter 'num' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_FlushTxFifo (USB_TypeDef *USBx, uint32_t num )
+                                                                ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_FlushRxFifo':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1592:48: warning: unused parameter 'USBx' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_FlushRxFifo(USB_TypeDef *USBx)
+                                                ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_WritePacket':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1833:48: warning: unused parameter 'USBx' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_WritePacket(USB_TypeDef *USBx, uint8_t *src, uint8_t ch_ep_num, uint16_t len)
+                                                ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1833:63: warning: unused parameter 'src' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_WritePacket(USB_TypeDef *USBx, uint8_t *src, uint8_t ch_ep_num, uint16_t len)
+                                                               ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1833:76: warning: unused parameter 'ch_ep_num' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_WritePacket(USB_TypeDef *USBx, uint8_t *src, uint8_t ch_ep_num, uint16_t len)
+                                                                            ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1833:96: warning: unused parameter 'len' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_WritePacket(USB_TypeDef *USBx, uint8_t *src, uint8_t ch_ep_num, uint16_t len)
+                                                                                                ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_ReadPacket':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1850:35: warning: unused parameter 'USBx' [-Wunused-parameter]
+ void *USB_ReadPacket(USB_TypeDef *USBx, uint8_t *dest, uint16_t len)
+                                   ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1850:50: warning: unused parameter 'dest' [-Wunused-parameter]
+ void *USB_ReadPacket(USB_TypeDef *USBx, uint8_t *dest, uint16_t len)
+                                                  ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1850:65: warning: unused parameter 'len' [-Wunused-parameter]
+ void *USB_ReadPacket(USB_TypeDef *USBx, uint8_t *dest, uint16_t len)
+                                                                 ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_DevConnect':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1949:49: warning: unused parameter 'USBx' [-Wunused-parameter]
+ HAL_StatusTypeDef  USB_DevConnect (USB_TypeDef *USBx)
+                                                 ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_DevDisconnect':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1963:52: warning: unused parameter 'USBx' [-Wunused-parameter]
+ HAL_StatusTypeDef  USB_DevDisconnect (USB_TypeDef *USBx)
+                                                    ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_ReadDevAllOutEpInterrupt':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:1990:53: warning: unused parameter 'USBx' [-Wunused-parameter]
+ uint32_t USB_ReadDevAllOutEpInterrupt (USB_TypeDef *USBx)
+                                                     ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_ReadDevAllInEpInterrupt':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:2004:52: warning: unused parameter 'USBx' [-Wunused-parameter]
+ uint32_t USB_ReadDevAllInEpInterrupt (USB_TypeDef *USBx)
+                                                    ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_ReadDevOutEPInterrupt':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:2020:50: warning: unused parameter 'USBx' [-Wunused-parameter]
+ uint32_t USB_ReadDevOutEPInterrupt (USB_TypeDef *USBx , uint8_t epnum)
+                                                  ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:2020:65: warning: unused parameter 'epnum' [-Wunused-parameter]
+ uint32_t USB_ReadDevOutEPInterrupt (USB_TypeDef *USBx , uint8_t epnum)
+                                                                 ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_ReadDevInEPInterrupt':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:2036:49: warning: unused parameter 'USBx' [-Wunused-parameter]
+ uint32_t USB_ReadDevInEPInterrupt (USB_TypeDef *USBx , uint8_t epnum)
+                                                 ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:2036:64: warning: unused parameter 'epnum' [-Wunused-parameter]
+ uint32_t USB_ReadDevInEPInterrupt (USB_TypeDef *USBx , uint8_t epnum)
+                                                                ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_ClearInterrupts':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:2051:41: warning: unused parameter 'USBx' [-Wunused-parameter]
+ void  USB_ClearInterrupts (USB_TypeDef *USBx, uint32_t interrupt)
+                                         ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:2051:56: warning: unused parameter 'interrupt' [-Wunused-parameter]
+ void  USB_ClearInterrupts (USB_TypeDef *USBx, uint32_t interrupt)
+                                                        ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c: In function 'USB_EP0_OutStart':
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:2065:49: warning: unused parameter 'USBx' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_EP0_OutStart(USB_TypeDef *USBx, uint8_t *psetup)
+                                                 ^
+../system/src/stm32f1xx/stm32f1xx_ll_usb.c:2065:64: warning: unused parameter 'psetup' [-Wunused-parameter]
+ HAL_StatusTypeDef USB_EP0_OutStart(USB_TypeDef *USBx, uint8_t *psetup)
+                                                                ^
+Finished building: ../system/src/stm32f1xx/stm32f1xx_ll_usb.c
+ 
+Building file: ../system/src/newlib/_cxx.cpp
+Invoking: Cross ARM C++ Compiler
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu++11 -fabi-version=0 -fno-exceptions -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics -MMD -MP -MF"system/src/newlib/_cxx.d" -MT"system/src/newlib/_cxx.o" -c -o "system/src/newlib/_cxx.o" "../system/src/newlib/_cxx.cpp"
+Finished building: ../system/src/newlib/_cxx.cpp
+ 
+Building file: ../system/src/newlib/_exit.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/newlib/_exit.d" -MT"system/src/newlib/_exit.o" -c -o "system/src/newlib/_exit.o" "../system/src/newlib/_exit.c"
+Finished building: ../system/src/newlib/_exit.c
+ 
+Building file: ../system/src/newlib/_sbrk.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/newlib/_sbrk.d" -MT"system/src/newlib/_sbrk.o" -c -o "system/src/newlib/_sbrk.o" "../system/src/newlib/_sbrk.c"
+Finished building: ../system/src/newlib/_sbrk.c
+ 
+Building file: ../system/src/newlib/_startup.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/newlib/_startup.d" -MT"system/src/newlib/_startup.o" -c -o "system/src/newlib/_startup.o" "../system/src/newlib/_startup.c"
+Finished building: ../system/src/newlib/_startup.c
+ 
+Building file: ../system/src/newlib/_syscalls.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/newlib/_syscalls.d" -MT"system/src/newlib/_syscalls.o" -c -o "system/src/newlib/_syscalls.o" "../system/src/newlib/_syscalls.c"
+Finished building: ../system/src/newlib/_syscalls.c
+ 
+Building file: ../system/src/newlib/assert.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/newlib/assert.d" -MT"system/src/newlib/assert.o" -c -o "system/src/newlib/assert.o" "../system/src/newlib/assert.c"
+Finished building: ../system/src/newlib/assert.c
+ 
+Building file: ../system/src/diag/Trace.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/diag/Trace.d" -MT"system/src/diag/Trace.o" -c -o "system/src/diag/Trace.o" "../system/src/diag/Trace.c"
+Finished building: ../system/src/diag/Trace.c
+ 
+Building file: ../system/src/diag/trace_impl.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/diag/trace_impl.d" -MT"system/src/diag/trace_impl.o" -c -o "system/src/diag/trace_impl.o" "../system/src/diag/trace_impl.c"
+Finished building: ../system/src/diag/trace_impl.c
+ 
+Building file: ../system/src/cortexm/_initialize_hardware.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/cortexm/_initialize_hardware.d" -MT"system/src/cortexm/_initialize_hardware.o" -c -o "system/src/cortexm/_initialize_hardware.o" "../system/src/cortexm/_initialize_hardware.c"
+Finished building: ../system/src/cortexm/_initialize_hardware.c
+ 
+Building file: ../system/src/cortexm/_reset_hardware.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/cortexm/_reset_hardware.d" -MT"system/src/cortexm/_reset_hardware.o" -c -o "system/src/cortexm/_reset_hardware.o" "../system/src/cortexm/_reset_hardware.c"
+Finished building: ../system/src/cortexm/_reset_hardware.c
+ 
+Building file: ../system/src/cortexm/exception_handlers.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/cortexm/exception_handlers.d" -MT"system/src/cortexm/exception_handlers.o" -c -o "system/src/cortexm/exception_handlers.o" "../system/src/cortexm/exception_handlers.c"
+Finished building: ../system/src/cortexm/exception_handlers.c
+ 
+Building file: ../system/src/cmsis/startup_stm32f103xb.S
+Invoking: Cross ARM GNU Assembler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -x assembler-with-cpp -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -MMD -MP -MF"system/src/cmsis/startup_stm32f103xb.d" -MT"system/src/cmsis/startup_stm32f103xb.o" -c -o "system/src/cmsis/startup_stm32f103xb.o" "../system/src/cmsis/startup_stm32f103xb.S"
+Finished building: ../system/src/cmsis/startup_stm32f103xb.S
+ 
+Building file: ../system/src/cmsis/system_stm32f1xx.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"system/src/cmsis/system_stm32f1xx.d" -MT"system/src/cmsis/system_stm32f1xx.o" -c -o "system/src/cmsis/system_stm32f1xx.o" "../system/src/cmsis/system_stm32f1xx.c"
+Finished building: ../system/src/cmsis/system_stm32f1xx.c
+ 
+Building file: ../src/freertos.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/freertos.d" -MT"src/freertos.o" -c -o "src/freertos.o" "../src/freertos.c"
+Finished building: ../src/freertos.c
+ 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'StartDefaultTask':
+../src/main.c:441:36: warning: unused parameter 'argument' [-Wunused-parameter]
+ void StartDefaultTask(void const * argument)
+                                    ^
+../src/main.c: In function 'StartTask02':
+../src/main.c:456:31: warning: unused parameter 'argument' [-Wunused-parameter]
+ void StartTask02(void const * argument)
+                               ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:512:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:512:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building file: ../src/stm32f1xx_hal_msp.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/stm32f1xx_hal_msp.d" -MT"src/stm32f1xx_hal_msp.o" -c -o "src/stm32f1xx_hal_msp.o" "../src/stm32f1xx_hal_msp.c"
+Finished building: ../src/stm32f1xx_hal_msp.c
+ 
+Building file: ../src/stm32f1xx_hal_timebase_TIM.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/stm32f1xx_hal_timebase_TIM.d" -MT"src/stm32f1xx_hal_timebase_TIM.o" -c -o "src/stm32f1xx_hal_timebase_TIM.o" "../src/stm32f1xx_hal_timebase_TIM.c"
+Finished building: ../src/stm32f1xx_hal_timebase_TIM.c
+ 
+Building file: ../src/stm32f1xx_it.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/stm32f1xx_it.d" -MT"src/stm32f1xx_it.o" -c -o "src/stm32f1xx_it.o" "../src/stm32f1xx_it.c"
+Finished building: ../src/stm32f1xx_it.c
+ 
+Building file: ../src/usb_device.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/usb_device.d" -MT"src/usb_device.o" -c -o "src/usb_device.o" "../src/usb_device.c"
+Finished building: ../src/usb_device.c
+ 
+Building file: ../src/usbd_conf.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/usbd_conf.d" -MT"src/usbd_conf.o" -c -o "src/usbd_conf.o" "../src/usbd_conf.c"
+../src/usbd_conf.c: In function 'USBD_static_malloc':
+../src/usbd_conf.c:468:35: warning: unused parameter 'size' [-Wunused-parameter]
+ void *USBD_static_malloc(uint32_t size)
+                                   ^
+../src/usbd_conf.c: In function 'USBD_static_free':
+../src/usbd_conf.c:479:29: warning: unused parameter 'p' [-Wunused-parameter]
+ void USBD_static_free(void *p)
+                             ^
+../src/usbd_conf.c: In function 'HAL_PCDEx_SetConnectionState':
+../src/usbd_conf.c:490:54: warning: unused parameter 'hpcd' [-Wunused-parameter]
+ void HAL_PCDEx_SetConnectionState(PCD_HandleTypeDef *hpcd, uint8_t state)
+                                                      ^
+Finished building: ../src/usbd_conf.c
+ 
+Building file: ../src/usbd_desc.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/usbd_desc.d" -MT"src/usbd_desc.o" -c -o "src/usbd_desc.o" "../src/usbd_desc.c"
+../src/usbd_desc.c: In function 'USBD_FS_DeviceDescriptor':
+../src/usbd_desc.c:174:56: warning: unused parameter 'speed' [-Wunused-parameter]
+ uint8_t *  USBD_FS_DeviceDescriptor( USBD_SpeedTypeDef speed , uint16_t *length)
+                                                        ^
+../src/usbd_desc.c: In function 'USBD_FS_LangIDStrDescriptor':
+../src/usbd_desc.c:187:59: warning: unused parameter 'speed' [-Wunused-parameter]
+ uint8_t *  USBD_FS_LangIDStrDescriptor( USBD_SpeedTypeDef speed , uint16_t *length)
+                                                           ^
+../src/usbd_desc.c: In function 'USBD_FS_ProductStrDescriptor':
+../src/usbd_desc.c:63:36: warning: pointer targets in passing argument 1 of 'USBD_GetString' differ in signedness [-Wpointer-sign]
+ #define USBD_PRODUCT_STRING_FS     "STM32 DownLoad Firmware Update"
+                                    ^
+../src/usbd_desc.c:204:21: note: in expansion of macro 'USBD_PRODUCT_STRING_FS'
+     USBD_GetString (USBD_PRODUCT_STRING_FS, USBD_StrDesc, length);
+                     ^
+In file included from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:40:0,
+                 from ../src/usbd_desc.c:36:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:93:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void USBD_GetString         (uint8_t *desc, uint8_t *unicode, uint16_t *len);
+      ^
+../src/usbd_desc.c:63:36: warning: pointer targets in passing argument 1 of 'USBD_GetString' differ in signedness [-Wpointer-sign]
+ #define USBD_PRODUCT_STRING_FS     "STM32 DownLoad Firmware Update"
+                                    ^
+../src/usbd_desc.c:208:21: note: in expansion of macro 'USBD_PRODUCT_STRING_FS'
+     USBD_GetString (USBD_PRODUCT_STRING_FS, USBD_StrDesc, length);    
+                     ^
+In file included from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:40:0,
+                 from ../src/usbd_desc.c:36:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:93:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void USBD_GetString         (uint8_t *desc, uint8_t *unicode, uint16_t *len);
+      ^
+../src/usbd_desc.c: In function 'USBD_FS_ManufacturerStrDescriptor':
+../src/usbd_desc.c:61:38: warning: pointer targets in passing argument 1 of 'USBD_GetString' differ in signedness [-Wpointer-sign]
+ #define USBD_MANUFACTURER_STRING     "STMicroelectronics"
+                                      ^
+../src/usbd_desc.c:222:19: note: in expansion of macro 'USBD_MANUFACTURER_STRING'
+   USBD_GetString (USBD_MANUFACTURER_STRING, USBD_StrDesc, length);
+                   ^
+In file included from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:40:0,
+                 from ../src/usbd_desc.c:36:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:93:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void USBD_GetString         (uint8_t *desc, uint8_t *unicode, uint16_t *len);
+      ^
+../src/usbd_desc.c:220:65: warning: unused parameter 'speed' [-Wunused-parameter]
+ uint8_t *  USBD_FS_ManufacturerStrDescriptor( USBD_SpeedTypeDef speed , uint16_t *length)
+                                                                 ^
+../src/usbd_desc.c: In function 'USBD_FS_SerialStrDescriptor':
+../src/usbd_desc.c:64:41: warning: pointer targets in passing argument 1 of 'USBD_GetString' differ in signedness [-Wpointer-sign]
+ #define USBD_SERIALNUMBER_STRING_FS     "00000000001A"
+                                         ^
+../src/usbd_desc.c:237:21: note: in expansion of macro 'USBD_SERIALNUMBER_STRING_FS'
+     USBD_GetString (USBD_SERIALNUMBER_STRING_FS, USBD_StrDesc, length);
+                     ^
+In file included from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:40:0,
+                 from ../src/usbd_desc.c:36:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:93:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void USBD_GetString         (uint8_t *desc, uint8_t *unicode, uint16_t *len);
+      ^
+../src/usbd_desc.c:64:41: warning: pointer targets in passing argument 1 of 'USBD_GetString' differ in signedness [-Wpointer-sign]
+ #define USBD_SERIALNUMBER_STRING_FS     "00000000001A"
+                                         ^
+../src/usbd_desc.c:241:21: note: in expansion of macro 'USBD_SERIALNUMBER_STRING_FS'
+     USBD_GetString (USBD_SERIALNUMBER_STRING_FS, USBD_StrDesc, length);    
+                     ^
+In file included from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:40:0,
+                 from ../src/usbd_desc.c:36:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:93:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void USBD_GetString         (uint8_t *desc, uint8_t *unicode, uint16_t *len);
+      ^
+../src/usbd_desc.c: In function 'USBD_FS_ConfigStrDescriptor':
+../src/usbd_desc.c:65:42: warning: pointer targets in passing argument 1 of 'USBD_GetString' differ in signedness [-Wpointer-sign]
+ #define USBD_CONFIGURATION_STRING_FS     "DFU Config"
+                                          ^
+../src/usbd_desc.c:257:21: note: in expansion of macro 'USBD_CONFIGURATION_STRING_FS'
+     USBD_GetString (USBD_CONFIGURATION_STRING_FS, USBD_StrDesc, length);
+                     ^
+In file included from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:40:0,
+                 from ../src/usbd_desc.c:36:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:93:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void USBD_GetString         (uint8_t *desc, uint8_t *unicode, uint16_t *len);
+      ^
+../src/usbd_desc.c:65:42: warning: pointer targets in passing argument 1 of 'USBD_GetString' differ in signedness [-Wpointer-sign]
+ #define USBD_CONFIGURATION_STRING_FS     "DFU Config"
+                                          ^
+../src/usbd_desc.c:261:21: note: in expansion of macro 'USBD_CONFIGURATION_STRING_FS'
+     USBD_GetString (USBD_CONFIGURATION_STRING_FS, USBD_StrDesc, length); 
+                     ^
+In file included from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:40:0,
+                 from ../src/usbd_desc.c:36:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:93:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void USBD_GetString         (uint8_t *desc, uint8_t *unicode, uint16_t *len);
+      ^
+../src/usbd_desc.c: In function 'USBD_FS_InterfaceStrDescriptor':
+../src/usbd_desc.c:66:38: warning: pointer targets in passing argument 1 of 'USBD_GetString' differ in signedness [-Wpointer-sign]
+ #define USBD_INTERFACE_STRING_FS     "DFU Interface"
+                                      ^
+../src/usbd_desc.c:277:21: note: in expansion of macro 'USBD_INTERFACE_STRING_FS'
+     USBD_GetString (USBD_INTERFACE_STRING_FS, USBD_StrDesc, length);
+                     ^
+In file included from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:40:0,
+                 from ../src/usbd_desc.c:36:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:93:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void USBD_GetString         (uint8_t *desc, uint8_t *unicode, uint16_t *len);
+      ^
+../src/usbd_desc.c:66:38: warning: pointer targets in passing argument 1 of 'USBD_GetString' differ in signedness [-Wpointer-sign]
+ #define USBD_INTERFACE_STRING_FS     "DFU Interface"
+                                      ^
+../src/usbd_desc.c:281:21: note: in expansion of macro 'USBD_INTERFACE_STRING_FS'
+     USBD_GetString (USBD_INTERFACE_STRING_FS, USBD_StrDesc, length);
+                     ^
+In file included from ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:40:0,
+                 from ../src/usbd_desc.c:36:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:93:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void USBD_GetString         (uint8_t *desc, uint8_t *unicode, uint16_t *len);
+      ^
+Finished building: ../src/usbd_desc.c
+ 
+Building file: ../src/usbd_dfu_if.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/usbd_dfu_if.d" -MT"src/usbd_dfu_if.o" -c -o "src/usbd_dfu_if.o" "../src/usbd_dfu_if.c"
+../src/usbd_dfu_if.c: In function 'MEM_If_Erase_FS':
+../src/usbd_dfu_if.c:161:35: warning: unused parameter 'Add' [-Wunused-parameter]
+ uint16_t MEM_If_Erase_FS(uint32_t Add)
+                                   ^
+../src/usbd_dfu_if.c: In function 'MEM_If_Write_FS':
+../src/usbd_dfu_if.c:176:35: warning: unused parameter 'src' [-Wunused-parameter]
+ uint16_t MEM_If_Write_FS(uint8_t *src, uint8_t *dest, uint32_t Len)
+                                   ^
+../src/usbd_dfu_if.c:176:49: warning: unused parameter 'dest' [-Wunused-parameter]
+ uint16_t MEM_If_Write_FS(uint8_t *src, uint8_t *dest, uint32_t Len)
+                                                 ^
+../src/usbd_dfu_if.c:176:64: warning: unused parameter 'Len' [-Wunused-parameter]
+ uint16_t MEM_If_Write_FS(uint8_t *src, uint8_t *dest, uint32_t Len)
+                                                                ^
+../src/usbd_dfu_if.c: In function 'MEM_If_Read_FS':
+../src/usbd_dfu_if.c:191:35: warning: unused parameter 'src' [-Wunused-parameter]
+ uint8_t *MEM_If_Read_FS (uint8_t *src, uint8_t *dest, uint32_t Len)
+                                   ^
+../src/usbd_dfu_if.c:191:49: warning: unused parameter 'dest' [-Wunused-parameter]
+ uint8_t *MEM_If_Read_FS (uint8_t *src, uint8_t *dest, uint32_t Len)
+                                                 ^
+../src/usbd_dfu_if.c:191:64: warning: unused parameter 'Len' [-Wunused-parameter]
+ uint8_t *MEM_If_Read_FS (uint8_t *src, uint8_t *dest, uint32_t Len)
+                                                                ^
+../src/usbd_dfu_if.c: In function 'MEM_If_GetStatus_FS':
+../src/usbd_dfu_if.c:207:40: warning: unused parameter 'Add' [-Wunused-parameter]
+ uint16_t MEM_If_GetStatus_FS (uint32_t Add, uint8_t Cmd, uint8_t *buffer)
+                                        ^
+../src/usbd_dfu_if.c:207:67: warning: unused parameter 'buffer' [-Wunused-parameter]
+ uint16_t MEM_If_GetStatus_FS (uint32_t Add, uint8_t Cmd, uint8_t *buffer)
+                                                                   ^
+Finished building: ../src/usbd_dfu_if.c
+ 
+Building file: ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o" -c -o "Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o" "../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c"
+Finished building: ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
+ 
+Building file: ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o" -c -o "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o" "../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c"
+Finished building: ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.c
+ 
+Building file: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o" -c -o "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o" "../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c"
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c: In function 'osTimerCreate':
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:340:46: warning: unused parameter 'timer_def' [-Wunused-parameter]
+ osTimerId osTimerCreate (const osTimerDef_t *timer_def, os_timer_type type, void *argument)
+                                              ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:340:71: warning: unused parameter 'type' [-Wunused-parameter]
+ osTimerId osTimerCreate (const osTimerDef_t *timer_def, os_timer_type type, void *argument)
+                                                                       ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:340:83: warning: unused parameter 'argument' [-Wunused-parameter]
+ osTimerId osTimerCreate (const osTimerDef_t *timer_def, os_timer_type type, void *argument)
+                                                                                   ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c: In function 'osTimerStart':
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:360:34: warning: unused parameter 'timer_id' [-Wunused-parameter]
+ osStatus osTimerStart (osTimerId timer_id, uint32_t millisec)
+                                  ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:360:53: warning: unused parameter 'millisec' [-Wunused-parameter]
+ osStatus osTimerStart (osTimerId timer_id, uint32_t millisec)
+                                                     ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c: In function 'osTimerStop':
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:399:33: warning: unused parameter 'timer_id' [-Wunused-parameter]
+ osStatus osTimerStop (osTimerId timer_id)
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c: In function 'osTimerDelete':
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:428:35: warning: unused parameter 'timer_id' [-Wunused-parameter]
+ osStatus osTimerDelete (osTimerId timer_id)
+                                   ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c: In function 'osMutexCreate':
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:554:46: warning: unused parameter 'mutex_def' [-Wunused-parameter]
+ osMutexId osMutexCreate (const osMutexDef_t *mutex_def)
+                                              ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c: In function 'osThreadList':
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:1399:33: warning: unused parameter 'buffer' [-Wunused-parameter]
+ osStatus osThreadList (uint8_t *buffer)
+                                 ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c: In function 'osRecursiveMutexRelease':
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:1469:45: warning: unused parameter 'mutex_id' [-Wunused-parameter]
+ osStatus osRecursiveMutexRelease (osMutexId mutex_id)
+                                             ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c: In function 'osRecursiveMutexWait':
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:1490:42: warning: unused parameter 'mutex_id' [-Wunused-parameter]
+ osStatus osRecursiveMutexWait (osMutexId mutex_id, uint32_t millisec)
+                                          ^
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c:1490:61: warning: unused parameter 'millisec' [-Wunused-parameter]
+ osStatus osRecursiveMutexWait (osMutexId mutex_id, uint32_t millisec)
+                                                             ^
+Finished building: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
+ 
+Building file: ../Middlewares/Third_Party/FreeRTOS/Source/croutine.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/croutine.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/croutine.o" -c -o "Middlewares/Third_Party/FreeRTOS/Source/croutine.o" "../Middlewares/Third_Party/FreeRTOS/Source/croutine.c"
+Finished building: ../Middlewares/Third_Party/FreeRTOS/Source/croutine.c
+ 
+Building file: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/event_groups.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/event_groups.o" -c -o "Middlewares/Third_Party/FreeRTOS/Source/event_groups.o" "../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c"
+Finished building: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
+ 
+Building file: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/list.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/list.o" -c -o "Middlewares/Third_Party/FreeRTOS/Source/list.o" "../Middlewares/Third_Party/FreeRTOS/Source/list.c"
+Finished building: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+ 
+Building file: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/queue.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/queue.o" -c -o "Middlewares/Third_Party/FreeRTOS/Source/queue.o" "../Middlewares/Third_Party/FreeRTOS/Source/queue.c"
+Finished building: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
+ 
+Building file: ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/tasks.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/tasks.o" -c -o "Middlewares/Third_Party/FreeRTOS/Source/tasks.o" "../Middlewares/Third_Party/FreeRTOS/Source/tasks.c"
+Finished building: ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
+ 
+Building file: ../Middlewares/Third_Party/FreeRTOS/Source/timers.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/Third_Party/FreeRTOS/Source/timers.d" -MT"Middlewares/Third_Party/FreeRTOS/Source/timers.o" -c -o "Middlewares/Third_Party/FreeRTOS/Source/timers.o" "../Middlewares/Third_Party/FreeRTOS/Source/timers.c"
+Finished building: ../Middlewares/Third_Party/FreeRTOS/Source/timers.c
+ 
+Building file: ../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.d" -MT"Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o" -c -o "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o" "../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c"
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c: In function 'USBD_RunTestMode':
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c:213:60: warning: unused parameter 'pdev' [-Wunused-parameter]
+ USBD_StatusTypeDef  USBD_RunTestMode (USBD_HandleTypeDef  *pdev) 
+                                                            ^
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c: In function 'USBD_LL_IsoINIncomplete':
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c:509:65: warning: unused parameter 'pdev' [-Wunused-parameter]
+ USBD_StatusTypeDef USBD_LL_IsoINIncomplete(USBD_HandleTypeDef  *pdev, uint8_t epnum)
+                                                                 ^
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c:509:79: warning: unused parameter 'epnum' [-Wunused-parameter]
+ USBD_StatusTypeDef USBD_LL_IsoINIncomplete(USBD_HandleTypeDef  *pdev, uint8_t epnum)
+                                                                               ^
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c: In function 'USBD_LL_IsoOUTIncomplete':
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c:520:66: warning: unused parameter 'pdev' [-Wunused-parameter]
+ USBD_StatusTypeDef USBD_LL_IsoOUTIncomplete(USBD_HandleTypeDef  *pdev, uint8_t epnum)
+                                                                  ^
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c:520:80: warning: unused parameter 'epnum' [-Wunused-parameter]
+ USBD_StatusTypeDef USBD_LL_IsoOUTIncomplete(USBD_HandleTypeDef  *pdev, uint8_t epnum)
+                                                                                ^
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c: In function 'USBD_LL_DevConnected':
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c:531:62: warning: unused parameter 'pdev' [-Wunused-parameter]
+ USBD_StatusTypeDef USBD_LL_DevConnected(USBD_HandleTypeDef  *pdev)
+                                                              ^
+Finished building: ../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c
+ 
+Building file: ../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.d" -MT"Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o" -c -o "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o" "../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c"
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c: In function 'USBD_CtlError':
+../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c:717:51: warning: unused parameter 'req' [-Wunused-parameter]
+                             USBD_SetupReqTypedef *req)
+                                                   ^
+Finished building: ../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
+ 
+Building file: ../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.d" -MT"Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o" -c -o "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o" "../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c"
+Finished building: ../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c
+ 
+Building file: ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.d" -MT"Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o" -c -o "Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o" "../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c"
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c: In function 'USBD_DFU_Init':
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:287:40: warning: unused parameter 'cfgidx' [-Wunused-parameter]
+                                uint8_t cfgidx)
+                                        ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c: In function 'USBD_DFU_DeInit':
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:334:42: warning: unused parameter 'cfgidx' [-Wunused-parameter]
+                                  uint8_t cfgidx)
+                                          ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c: In function 'USBD_DFU_DataIn':
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:478:54: warning: unused parameter 'pdev' [-Wunused-parameter]
+ static uint8_t  USBD_DFU_DataIn (USBD_HandleTypeDef *pdev, 
+                                                      ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:479:39: warning: unused parameter 'epnum' [-Wunused-parameter]
+                               uint8_t epnum)
+                                       ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c: In function 'USBD_DFU_EP0_RxReady':
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:491:59: warning: unused parameter 'pdev' [-Wunused-parameter]
+ static uint8_t  USBD_DFU_EP0_RxReady (USBD_HandleTypeDef *pdev)
+                                                           ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c: In function 'USBD_DFU_SOF':
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:588:51: warning: unused parameter 'pdev' [-Wunused-parameter]
+ static uint8_t  USBD_DFU_SOF (USBD_HandleTypeDef *pdev)
+                                                   ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c: In function 'USBD_DFU_IsoINIncomplete':
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:600:63: warning: unused parameter 'pdev' [-Wunused-parameter]
+ static uint8_t  USBD_DFU_IsoINIncomplete (USBD_HandleTypeDef *pdev, uint8_t epnum)
+                                                               ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:600:77: warning: unused parameter 'epnum' [-Wunused-parameter]
+ static uint8_t  USBD_DFU_IsoINIncomplete (USBD_HandleTypeDef *pdev, uint8_t epnum)
+                                                                             ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c: In function 'USBD_DFU_IsoOutIncomplete':
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:612:64: warning: unused parameter 'pdev' [-Wunused-parameter]
+ static uint8_t  USBD_DFU_IsoOutIncomplete (USBD_HandleTypeDef *pdev, uint8_t epnum)
+                                                                ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:612:78: warning: unused parameter 'epnum' [-Wunused-parameter]
+ static uint8_t  USBD_DFU_IsoOutIncomplete (USBD_HandleTypeDef *pdev, uint8_t epnum)
+                                                                              ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c: In function 'USBD_DFU_DataOut':
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:624:55: warning: unused parameter 'pdev' [-Wunused-parameter]
+ static uint8_t  USBD_DFU_DataOut (USBD_HandleTypeDef *pdev, 
+                                                       ^
+../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c:625:39: warning: unused parameter 'epnum' [-Wunused-parameter]
+                               uint8_t epnum)
+                                       ^
+Finished building: ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  29155	    344	   7732	  37231	   916f	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+16:30:25 **** Build of configuration Debug for project Blink_simple_v2 ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Blink_simple_v2.elf"
+   text	   data	    bss	    dec	    hex	filename
+   5655	    176	    416	   6247	   1867	Blink_simple_v2.elf
+Finished building: Blink_simple_v2.siz
+ 
+16:30:45 **** Incremental Build of configuration Debug for project Blink_simple_v2 ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Blink_simple_v2.elf"
+   text	   data	    bss	    dec	    hex	filename
+   5655	    176	    416	   6247	   1867	Blink_simple_v2.elf
+Finished building: Blink_simple_v2.siz
+ 
+16:30:46 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  29155	    344	   7732	  37231	   916f	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+16:30:52 **** Incremental Build of configuration Debug for project Blink_simple_v2 ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Blink_simple_v2.elf"
+   text	   data	    bss	    dec	    hex	filename
+   5655	    176	    416	   6247	   1867	Blink_simple_v2.elf
+Finished building: Blink_simple_v2.siz
+ 
