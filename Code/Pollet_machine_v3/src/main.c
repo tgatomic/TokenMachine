@@ -58,7 +58,6 @@ DMA_HandleTypeDef hdma_usart3_rx;
 
 osThreadId defaultTaskHandle;
 osThreadId myTask02Handle;
-osThreadId myUARTTaskHandle;
 osMessageQId myQueue01Handle;
 
 /* USER CODE BEGIN PV */
@@ -79,7 +78,6 @@ static void MX_USART2_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
-void UARTTask(void const * argument);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                 
@@ -142,10 +140,6 @@ int main(void)
   /* definition and creation of myTask02 */
   osThreadDef(myTask02, StartTask02, osPriorityIdle, 0, 128);
   myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
-
-  /* definition and creation of myTask02 */
-  osThreadDef(myUARTTask, UARTTask, osPriorityIdle, 0, 128);
-  myUARTTaskHandle = osThreadCreate(osThread(myUARTTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -453,8 +447,7 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-    osDelay(500);
+    osDelay(1);
   }
   /* USER CODE END 5 */ 
 }
@@ -466,23 +459,9 @@ void StartTask02(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
-	osDelay(100);
+    osDelay(1);
   }
   /* USER CODE END StartTask02 */
-}
-
-void UARTTask(void const * argument)
-{
-	uint8_t message[2] = "Yo";
-  /* USER CODE BEGIN UARTTask */
-  /* Infinite loop */
-  for(;;)
-  {
-	HAL_UART_Transmit(&huart3, &message, 0x02, 0xfff);
-	osDelay(1000);
-  }
-  /* USER CODE END UARTTask */
 }
 
 /**
