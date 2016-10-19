@@ -291,7 +291,7 @@ static void MX_I2C1_Init(void)
 }
 
 /* TIM3 init function */
-static void MX_TIM3_Init(void)
+/*static void MX_TIM3_Init(void)
 {
 
   TIM_MasterConfigTypeDef sMasterConfig;
@@ -318,6 +318,44 @@ static void MX_TIM3_Init(void)
   sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  HAL_TIM_MspPostInit(&htim3);
+
+} */
+
+/* Modified MX_TIM3_Init function */
+static void MX_TIM3_Init(void)
+{
+
+  TIM_MasterConfigTypeDef sMasterConfig;
+  TIM_OC_InitTypeDef sConfigOC;
+
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 0;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 8000;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.RepetitionCounter = 0;
+  if (HAL_TIM_PWM_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 4000;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_ENABLE;
   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
   {
     Error_Handler();
@@ -403,6 +441,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
+  __HAL_RCC_TIM3_CLK_ENABLE();
+
   /*Configure GPIO pins : PC13 PC14 PC15 */
   GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
@@ -463,24 +503,69 @@ void StartDefaultTask(void const * argument)
 void StartTask02(void const * argument)
 {
   /* USER CODE BEGIN StartTask02 */
+  TIM_OC_InitTypeDef p;
+  p.OCMode = TIM_OCMODE_PWM1;
+  p.Pulse = 4000;
+  p.OCPolarity = TIM_OCPOLARITY_HIGH;
+  p.OCFastMode = TIM_OCFAST_ENABLE;
+
   /* Infinite loop */
   for(;;)
   {
-	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
-	osDelay(100);
+	  //	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
+	  for(uint16_t ix = 0; ix < 8000; ) {
+		  // *** Queue ix here
+		  if(!uxQueueMessagesWaiting(myQueue01Handle))
+		  {
+			  p.Pulse = ix;
+			  xQueueSend(myQueue01Handle, &ix, 0);
+			  if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
+			   {
+				 Error_Handler();
+			   }
+			  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+			  ix += 200;
+		  }
+		  osDelay(250);
+	  }
+	  for(uint16_t ix = 8000; ix > 0; ) {
+		  if(!uxQueueMessagesWaiting(myQueue01Handle))
+		  {
+			  p.Pulse = ix;
+			  // *** Queue ix here
+			  xQueueSend(myQueue01Handle, &ix, 0);
+			  if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
+			   {
+				 Error_Handler();
+			   }
+			  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+			  ix -= 200;
+		  }
+		  osDelay(50);
+	  }
   }
   /* USER CODE END StartTask02 */
 }
 
 void UARTTask(void const * argument)
 {
-	uint8_t message[2] = "Yo";
+	uint8_t message[2];
+	uint16_t value = 0;
+
   /* USER CODE BEGIN UARTTask */
   /* Infinite loop */
   for(;;)
   {
-	HAL_UART_Transmit(&huart3, &message, 0x02, 0xfff);
-	osDelay(1000);
+	  // *** Pop ix here
+//	  HAL_UART_Transmit(&huart3, &message, 0x02, 0xfff);
+	  if(uxQueueMessagesWaiting(myQueue01Handle))
+	  {
+		  xQueueReceive(myQueue01Handle, &value, 0);
+		  message[1] = value >> 8;
+		  message[0] = value & 0xff;
+		  HAL_UART_Transmit(&huart3, &message, 0x02, 0xfff);
+	  }
+	  osDelay(10);
   }
   /* USER CODE END UARTTask */
 }
