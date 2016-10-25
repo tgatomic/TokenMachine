@@ -59,7 +59,12 @@ DMA_HandleTypeDef hdma_usart3_rx;
 osThreadId defaultTaskHandle;
 osThreadId myTask02Handle;
 osThreadId myUARTTaskHandle;
+osThreadId myButtonTaskHandle;
 osMessageQId myQueue01Handle;
+osSemaphoreId mySemaphoreHandle;
+osSemaphoreDef(mySemaphoreHandle);
+
+uint8_t status_flag;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -80,6 +85,7 @@ static void MX_USART3_UART_Init(void);
 void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
 void UARTTask(void const * argument);
+void ButtonTask(void const * argument);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                 
@@ -97,6 +103,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+	status_flag = 1;
 
   /* USER CODE END 1 */
 
@@ -127,6 +134,8 @@ int main(void)
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
+  mySemaphoreHandle = osSemaphoreCreate(osSemaphore(mySemaphoreHandle), 1);
+
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
 
@@ -136,16 +145,20 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityIdle, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of myTask02 */
   osThreadDef(myTask02, StartTask02, osPriorityIdle, 0, 128);
   myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
 
-  /* definition and creation of myTask02 */
+  /* definition and creation of myUARTTask */
   osThreadDef(myUARTTask, UARTTask, osPriorityIdle, 0, 128);
   myUARTTaskHandle = osThreadCreate(osThread(myUARTTask), NULL);
+
+  /* definition and creation of myButtonTask */
+//  osThreadDef(myButtonTask, ButtonTask, osPriorityIdle, 0, 128);
+//  myButtonTaskHandle = osThreadCreate(osThread(myButtonTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -160,7 +173,6 @@ int main(void)
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
  
-
   /* Start scheduler */
   osKernelStart();
   
@@ -458,7 +470,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pins : PB0 PB1 */
   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PB2 PB15 PB3 PB4 
@@ -477,6 +489,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14, GPIO_PIN_RESET);
 
+  /* Enable interrupt for button on PB0 */
+  HAL_NVIC_SetPriority(EXTI0_IRQn, configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY + 1, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 }
 
 /* USER CODE BEGIN 4 */
@@ -488,13 +503,20 @@ void StartDefaultTask(void const * argument)
 {
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
-
+  uint16_t SemaphoreValue = 0;
+  //osSemaphoreRelease(mySemaphoreHandle);
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
   for(;;)
   {
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-    osDelay(500);
+/*	 SemaphoreValue = osSemaphoreWait(mySemaphoreHandle, 1000);
+	  HAL_UART_Transmit(&huart3, &SemaphoreValue, 0x02, 0xfff); */
+
+	if(!osSemaphoreWait(mySemaphoreHandle, osWaitForever))
+	{
+		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+	}
+	osDelay(100);
   }
   /* USER CODE END 5 */ 
 }
@@ -512,9 +534,10 @@ void StartTask02(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  //	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
-	  for(uint16_t ix = 0; ix < 8000; ) {
-		  // *** Queue ix here
+	  //if(osSemaphoreWait(mySemaphoreHandle, 100));
+	  /* Fade LED up */
+	  for(uint16_t ix = 0; ix < 8000; )
+	  {
 		  if(!uxQueueMessagesWaiting(myQueue01Handle))
 		  {
 			  p.Pulse = ix;
@@ -528,7 +551,9 @@ void StartTask02(void const * argument)
 		  }
 		  osDelay(250);
 	  }
-	  for(uint16_t ix = 8000; ix > 0; ) {
+	  /* Fade LED down */
+	  for(uint16_t ix = 8000; ix > 0; )
+	  {
 		  if(!uxQueueMessagesWaiting(myQueue01Handle))
 		  {
 			  p.Pulse = ix;
@@ -543,6 +568,8 @@ void StartTask02(void const * argument)
 		  }
 		  osDelay(50);
 	  }
+//	  	osSemaphoreRelease(mySemaphoreHandle);
+	  	osDelay(100);
   }
   /* USER CODE END StartTask02 */
 }
@@ -557,17 +584,32 @@ void UARTTask(void const * argument)
   for(;;)
   {
 	  // *** Pop ix here
-//	  HAL_UART_Transmit(&huart3, &message, 0x02, 0xfff);
 	  if(uxQueueMessagesWaiting(myQueue01Handle))
 	  {
 		  xQueueReceive(myQueue01Handle, &value, 0);
 		  message[1] = value >> 8;
 		  message[0] = value & 0xff;
-		  HAL_UART_Transmit(&huart3, &message, 0x02, 0xfff);
+//		  HAL_UART_Transmit(&huart3, &message, 0x02, 0xfff);
 	  }
 	  osDelay(10);
   }
   /* USER CODE END UARTTask */
+}
+
+void ButtonTask(void const * argument)
+{
+	uint8_t last = 0;
+	/* Infinite loop */
+	for(;;)
+	{
+		// Check if button pressed
+		if(status_flag != last)
+		{
+			osSemaphoreRelease(mySemaphoreHandle);
+			last = status_flag;
+		}
+		osDelay(10);
+	}
 }
 
 /**
