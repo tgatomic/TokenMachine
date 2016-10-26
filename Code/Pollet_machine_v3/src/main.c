@@ -62,9 +62,8 @@ osThreadId myUARTTaskHandle;
 osThreadId myButtonTaskHandle;
 osMessageQId myQueue01Handle;
 osSemaphoreId mySemaphoreHandle;
-osSemaphoreDef(mySemaphoreHandle);
 
-uint8_t status_flag;
+uint8_t button_pressed;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -103,7 +102,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	status_flag = 1;
+	button_pressed = 0;
 
   /* USER CODE END 1 */
 
@@ -134,6 +133,7 @@ int main(void)
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
+  osSemaphoreDef(mySemaphoreHandle);
   mySemaphoreHandle = osSemaphoreCreate(osSemaphore(mySemaphoreHandle), 1);
 
   /* add semaphores, ... */
@@ -157,8 +157,8 @@ int main(void)
   myUARTTaskHandle = osThreadCreate(osThread(myUARTTask), NULL);
 
   /* definition and creation of myButtonTask */
-//  osThreadDef(myButtonTask, ButtonTask, osPriorityIdle, 0, 128);
-//  myButtonTaskHandle = osThreadCreate(osThread(myButtonTask), NULL);
+  osThreadDef(myButtonTask, ButtonTask, osPriorityIdle, 0, 128);
+  myButtonTaskHandle = osThreadCreate(osThread(myButtonTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -303,43 +303,6 @@ static void MX_I2C1_Init(void)
 }
 
 /* TIM3 init function */
-/*static void MX_TIM3_Init(void)
-{
-
-  TIM_MasterConfigTypeDef sMasterConfig;
-  TIM_OC_InitTypeDef sConfigOC;
-
-  htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 0;
-  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 0;
-  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  if (HAL_TIM_PWM_Init(&htim3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0;
-  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  HAL_TIM_MspPostInit(&htim3);
-
-} */
-
-/* Modified MX_TIM3_Init function */
 static void MX_TIM3_Init(void)
 {
 
@@ -503,20 +466,15 @@ void StartDefaultTask(void const * argument)
 {
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
-  uint16_t SemaphoreValue = 0;
-  //osSemaphoreRelease(mySemaphoreHandle);
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
   for(;;)
   {
-/*	 SemaphoreValue = osSemaphoreWait(mySemaphoreHandle, 1000);
-	  HAL_UART_Transmit(&huart3, &SemaphoreValue, 0x02, 0xfff); */
-
 	if(!osSemaphoreWait(mySemaphoreHandle, osWaitForever))
 	{
 		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
 	}
-	osDelay(100);
+	osDelay(10);
   }
   /* USER CODE END 5 */ 
 }
@@ -534,13 +492,13 @@ void StartTask02(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  //if(osSemaphoreWait(mySemaphoreHandle, 100));
 	  /* Fade LED up */
 	  for(uint16_t ix = 0; ix < 8000; )
 	  {
 		  if(!uxQueueMessagesWaiting(myQueue01Handle))
 		  {
 			  p.Pulse = ix;
+			  /* Push ix to the queue */
 			  xQueueSend(myQueue01Handle, &ix, 0);
 			  if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
 			   {
@@ -549,7 +507,7 @@ void StartTask02(void const * argument)
 			  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 			  ix += 200;
 		  }
-		  osDelay(250);
+		  osDelay(50);
 	  }
 	  /* Fade LED down */
 	  for(uint16_t ix = 8000; ix > 0; )
@@ -557,7 +515,7 @@ void StartTask02(void const * argument)
 		  if(!uxQueueMessagesWaiting(myQueue01Handle))
 		  {
 			  p.Pulse = ix;
-			  // *** Queue ix here
+			  /* Push ix to the queue */
 			  xQueueSend(myQueue01Handle, &ix, 0);
 			  if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
 			   {
@@ -568,48 +526,50 @@ void StartTask02(void const * argument)
 		  }
 		  osDelay(50);
 	  }
-//	  	osSemaphoreRelease(mySemaphoreHandle);
-	  	osDelay(100);
   }
   /* USER CODE END StartTask02 */
 }
 
+/* Start UARTTASK function */
 void UARTTask(void const * argument)
 {
-	uint8_t message[2];
-	uint16_t value = 0;
-
   /* USER CODE BEGIN UARTTask */
+  uint8_t message[2];
+  uint16_t value = 0;
+
   /* Infinite loop */
   for(;;)
   {
-	  // *** Pop ix here
+	  /* Check if there is something in the queue */
 	  if(uxQueueMessagesWaiting(myQueue01Handle))
 	  {
+		  /* Pull the value from the queue */
 		  xQueueReceive(myQueue01Handle, &value, 0);
 		  message[1] = value >> 8;
 		  message[0] = value & 0xff;
-//		  HAL_UART_Transmit(&huart3, &message, 0x02, 0xfff);
+		  HAL_UART_Transmit(&huart3, &message, 0x02, 0xfff);
 	  }
 	  osDelay(10);
   }
   /* USER CODE END UARTTask */
 }
 
+/* Start ButtonTask function */
 void ButtonTask(void const * argument)
 {
-	uint8_t last = 0;
+	/* USER CODE BEGIN ButtonTask */
 	/* Infinite loop */
 	for(;;)
 	{
-		// Check if button pressed
-		if(status_flag != last)
+		/* Check if button pressed */
+		if(button_pressed)
 		{
 			osSemaphoreRelease(mySemaphoreHandle);
-			last = status_flag;
+			button_pressed = 0;
 		}
-		osDelay(10);
+		osDelay(100);
 	}
+	/* USER CODE END ButtonTask */
 }
 
 /**
