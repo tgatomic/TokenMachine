@@ -39,6 +39,8 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
+
 
 /* USER CODE END Includes */
 
@@ -62,9 +64,12 @@ osThreadId myUARTTaskHandle;
 osThreadId myButtonTaskHandle;
 osThreadId myRFIDTaskHandle;
 osThreadId servo_task_handle;
+osThreadId number_check_handle;
 
 osMessageQId myQueue01Handle;
 osSemaphoreId mySemaphoreHandle;
+osSemaphoreId RFID_received_handle;
+osSemaphoreId autorized__card_handle;
 
 uint8_t button_pressed;
 uint8_t serial_key_number[4];
@@ -91,6 +96,7 @@ void UARTTask(void const * argument);
 void ButtonTask(void const * argument);
 void RFIDTask(void const * argument);
 void servo_task(void const * argument);
+void check_number_task(void const * argument);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                 
@@ -142,6 +148,13 @@ int main(void)
   osSemaphoreDef(mySemaphoreHandle);
   mySemaphoreHandle = osSemaphoreCreate(osSemaphore(mySemaphoreHandle), 1);
 
+  osSemaphoreDef(RFID_received_handle);
+  RFID_received_handle = osSemaphoreCreate(osSemaphore(RFID_received_handle), 1);
+
+  osSemaphoreDef(autorized__card_handle);
+  autorized__card_handle = osSemaphoreCreate(osSemaphore(autorized__card_handle), 1);
+
+
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
 
@@ -173,6 +186,11 @@ int main(void)
   /* definition and creation of servo_task */
   osThreadDef(servo, servo_task, osPriorityIdle, 0, 128);
   servo_task_handle = osThreadCreate(osThread(servo), NULL);
+
+  /* definition and creation of myRFIDTask */
+  osThreadDef(number_task, check_number_task, osPriorityIdle, 0, 128);
+  number_check_handle = osThreadCreate(osThread(number_task), NULL);
+
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -652,6 +670,26 @@ void RFIDTask(void const * argument)
 	/* USER CODE END RFIDTask */
 }
 
+
+void check_number_task(void const * argument)
+{
+	// Autorixed cards
+	uint8_t athorized_card1[4] ={0x74, 0x55, 0x9F, 0xC6};
+	uint8_t athorized_card2[4] ={0xBD, 0x1D, 0xB4, 0x43};
+
+	for(;;)
+	{
+		if (!osSemaphoreWait(RFID_received_handle, osWaitForever)){
+
+			// Check the number..
+			if ( strcmp(serial_key_number, athorized_card1) | strcmp(serial_key_number, athorized_card2) ){
+				osSemaphoreRelease(autorized__card_handle);
+			}
+		}
+		osDelay(250);
+	}
+	// Shouldn' happen
+}
 /**
   * @brief  Period elapsed callback in non blocking mode
   * @note   This function is called  when TIM1 interrupt took place, inside
