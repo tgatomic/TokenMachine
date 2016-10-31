@@ -49,6 +49,7 @@ extern TIM_HandleTypeDef htim1;
 extern osSemaphoreId mySemaphoreHandle;
 
 extern uint8_t button_pressed;
+extern uint8_t serial_key_number[4];
 /******************************************************************************/
 /*            Cortex-M3 Processor Interruption and Exception Handlers         */ 
 /******************************************************************************/
@@ -231,11 +232,12 @@ void TIM1_UP_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
-
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 1);
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
-
+  HAL_UART_Receive(&huart2, &serial_key_number[0], 0x04, 50);
+  __HAL_UART_CLEAR_FLAG(&huart2, UART_IT_RXNE);
   /* USER CODE END USART2_IRQn 1 */
 }
 

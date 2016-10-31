@@ -60,10 +60,12 @@ osThreadId defaultTaskHandle;
 osThreadId myTask02Handle;
 osThreadId myUARTTaskHandle;
 osThreadId myButtonTaskHandle;
+osThreadId myRFIDTaskHandle;
 osMessageQId myQueue01Handle;
 osSemaphoreId mySemaphoreHandle;
 
 uint8_t button_pressed;
+uint8_t serial_key_number[4];
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -85,6 +87,7 @@ void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
 void UARTTask(void const * argument);
 void ButtonTask(void const * argument);
+void RFIDTask(void const * argument);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                 
@@ -153,12 +156,16 @@ int main(void)
   myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
 
   /* definition and creation of myUARTTask */
-  osThreadDef(myUARTTask, UARTTask, osPriorityIdle, 0, 128);
-  myUARTTaskHandle = osThreadCreate(osThread(myUARTTask), NULL);
+//  osThreadDef(myUARTTask, UARTTask, osPriorityIdle, 0, 128);
+//  myUARTTaskHandle = osThreadCreate(osThread(myUARTTask), NULL);
 
   /* definition and creation of myButtonTask */
   osThreadDef(myButtonTask, ButtonTask, osPriorityIdle, 0, 128);
   myButtonTaskHandle = osThreadCreate(osThread(myButtonTask), NULL);
+
+  /* definition and creation of myRFIDTask */
+  osThreadDef(myRFIDTask, RFIDTask, osPriorityIdle, 0, 128);
+  myRFIDTaskHandle = osThreadCreate(osThread(myRFIDTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -172,7 +179,7 @@ int main(void)
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
- 
+
   /* Start scheduler */
   osKernelStart();
   
@@ -310,9 +317,9 @@ static void MX_TIM3_Init(void)
   TIM_OC_InitTypeDef sConfigOC;
 
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 0;
+  htim3.Init.Prescaler = 128;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 8000;
+  htim3.Init.Period = 11200;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.RepetitionCounter = 0;
   if (HAL_TIM_PWM_Init(&htim3) != HAL_OK)
@@ -345,7 +352,7 @@ static void MX_USART2_UART_Init(void)
 {
 
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
+  huart2.Init.BaudRate = 9600;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -356,6 +363,11 @@ static void MX_USART2_UART_Init(void)
   {
     Error_Handler();
   }
+
+  /* Enable interrupt for UART2 */
+  __HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE);
+  HAL_NVIC_SetPriority(USART2_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(USART2_IRQn);
 
 }
 
@@ -470,10 +482,11 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	if(!osSemaphoreWait(mySemaphoreHandle, osWaitForever))
-	{
-		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-	}
+//	if(!osSemaphoreWait(mySemaphoreHandle, osWaitForever))
+//	{
+//		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 1);
+//		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+//	}
 	osDelay(10);
   }
   /* USER CODE END 5 */ 
@@ -495,35 +508,35 @@ void StartTask02(void const * argument)
 	  /* Fade LED up */
 	  for(uint16_t ix = 0; ix < 8000; )
 	  {
-		  if(!uxQueueMessagesWaiting(myQueue01Handle))
-		  {
-			  p.Pulse = ix;
+//		  if(!uxQueueMessagesWaiting(myQueue01Handle))
+//		  {
+			  p.Pulse = 1120;
 			  /* Push ix to the queue */
-			  xQueueSend(myQueue01Handle, &ix, 0);
+//			  xQueueSend(myQueue01Handle, &ix, 0);
 			  if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
 			   {
 				 Error_Handler();
 			   }
 			  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 			  ix += 200;
-		  }
+//		  }
 		  osDelay(50);
 	  }
 	  /* Fade LED down */
 	  for(uint16_t ix = 8000; ix > 0; )
 	  {
-		  if(!uxQueueMessagesWaiting(myQueue01Handle))
-		  {
-			  p.Pulse = ix;
+//		  if(!uxQueueMessagesWaiting(myQueue01Handle))
+//		  {
+			  p.Pulse = 1120;
 			  /* Push ix to the queue */
-			  xQueueSend(myQueue01Handle, &ix, 0);
+//			  xQueueSend(myQueue01Handle, &ix, 0);
 			  if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
 			   {
 				 Error_Handler();
 			   }
 			  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 			  ix -= 200;
-		  }
+//		  }
 		  osDelay(50);
 	  }
   }
@@ -547,7 +560,7 @@ void UARTTask(void const * argument)
 		  xQueueReceive(myQueue01Handle, &value, 0);
 		  message[1] = value >> 8;
 		  message[0] = value & 0xff;
-		  HAL_UART_Transmit(&huart3, &message, 0x02, 0xfff);
+		  HAL_UART_Transmit(&huart3, &message[0], 0x02, 0xfff);
 	  }
 	  osDelay(10);
   }
@@ -564,12 +577,39 @@ void ButtonTask(void const * argument)
 		/* Check if button pressed */
 		if(button_pressed)
 		{
-			osSemaphoreRelease(mySemaphoreHandle);
+//			osSemaphoreRelease(mySemaphoreHandle);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
 			button_pressed = 0;
 		}
 		osDelay(100);
 	}
 	/* USER CODE END ButtonTask */
+}
+
+/* Start RFIDTask function */
+void RFIDTask(void const * argument)
+{
+	/* USER CODE BEGIN RFIDTask */
+	uint8_t command;
+	command = 2;
+	/* Command to tag reader to read serial key of the tag */
+	HAL_UART_Transmit(&huart2, &command, 0x01, 0xfff);
+	/* Infinite loop */
+	for(;;)
+	{
+/*		if(!osSemaphoreWait(mySemaphoreHandle, osWaitForever))
+		if(__HAL_UART_GET_IT_SOURCE(&huart2, UART_IT_RXNE)){
+		HAL_UART_Receive(&huart2, &inputData, sizeof(uint8_t), 50);
+		__HAL_UART_CLEAR_FLAG(&huart2, UART_IT_RXNE);
+		} */
+
+		if(button_pressed)
+		{
+			HAL_UART_Transmit(&huart3, &serial_key_number[0], 0x04, 0xfff);
+		}
+		osDelay(50);
+	}
+	/* USER CODE END RFIDTask */
 }
 
 /**
