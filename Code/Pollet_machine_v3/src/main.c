@@ -61,6 +61,8 @@ osThreadId myTask02Handle;
 osThreadId myUARTTaskHandle;
 osThreadId myButtonTaskHandle;
 osThreadId myRFIDTaskHandle;
+osThreadId servo_task_handle;
+
 osMessageQId myQueue01Handle;
 osSemaphoreId mySemaphoreHandle;
 
@@ -88,6 +90,7 @@ void StartTask02(void const * argument);
 void UARTTask(void const * argument);
 void ButtonTask(void const * argument);
 void RFIDTask(void const * argument);
+void servo_task(void const * argument);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                 
@@ -152,20 +155,24 @@ int main(void)
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of myTask02 */
-  osThreadDef(myTask02, StartTask02, osPriorityIdle, 0, 128);
-  myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
+//  osThreadDef(myTask02, StartTask02, osPriorityIdle, 0, 128);
+//  myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
 
   /* definition and creation of myUARTTask */
 //  osThreadDef(myUARTTask, UARTTask, osPriorityIdle, 0, 128);
 //  myUARTTaskHandle = osThreadCreate(osThread(myUARTTask), NULL);
 
   /* definition and creation of myButtonTask */
-  osThreadDef(myButtonTask, ButtonTask, osPriorityIdle, 0, 128);
-  myButtonTaskHandle = osThreadCreate(osThread(myButtonTask), NULL);
+//  osThreadDef(myButtonTask, ButtonTask, osPriorityIdle, 0, 128);
+//  myButtonTaskHandle = osThreadCreate(osThread(myButtonTask), NULL);
 
   /* definition and creation of myRFIDTask */
-  osThreadDef(myRFIDTask, RFIDTask, osPriorityIdle, 0, 128);
-  myRFIDTaskHandle = osThreadCreate(osThread(myRFIDTask), NULL);
+//  osThreadDef(myRFIDTask, RFIDTask, osPriorityIdle, 0, 128);
+//  myRFIDTaskHandle = osThreadCreate(osThread(myRFIDTask), NULL);
+
+  /* definition and creation of servo_task */
+  osThreadDef(servo, servo_task, osPriorityIdle, 0, 128);
+  servo_task_handle = osThreadCreate(osThread(servo), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -510,7 +517,7 @@ void StartTask02(void const * argument)
 	  {
 //		  if(!uxQueueMessagesWaiting(myQueue01Handle))
 //		  {
-			  p.Pulse = 1120;
+			  p.Pulse = 1020;
 			  /* Push ix to the queue */
 //			  xQueueSend(myQueue01Handle, &ix, 0);
 			  if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
@@ -565,6 +572,39 @@ void UARTTask(void const * argument)
 	  osDelay(10);
   }
   /* USER CODE END UARTTask */
+}
+
+/* Start servo_task function */
+void servo_task(void const * argument)
+{
+	/* USER CODE BEGIN servo_task */
+	TIM_OC_InitTypeDef p;
+
+	p.OCMode = TIM_OCMODE_PWM1;
+	p.Pulse = 1120;
+	p.OCPolarity = TIM_OCPOLARITY_HIGH;
+	p.OCFastMode = TIM_OCFAST_ENABLE;
+
+	/* Infinite loop */
+	for(;;)
+	{
+		p.Pulse = 1120;
+		if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
+		{
+			Error_Handler();
+		}
+		HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+		osDelay(1000);
+
+		p.Pulse = 920;
+		if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
+		{
+			Error_Handler();
+		}
+		HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+		osDelay(1000);
+	}
+	/* USER CODE END servo_task */
 }
 
 /* Start ButtonTask function */
