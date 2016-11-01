@@ -52,6 +52,7 @@ extern osSemaphoreId RFID_received_handle;
 
 extern uint8_t button_pressed;
 extern uint8_t serial_key_number[4];
+extern uint8_t isr_pos;
 /******************************************************************************/
 /*            Cortex-M3 Processor Interruption and Exception Handlers         */ 
 /******************************************************************************/
@@ -234,17 +235,22 @@ void TIM1_UP_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 1);
 
+
+  HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
-  HAL_UART_Receive(&huart2, &serial_key_number[0], 0x04, 50);
+//  if(__HAL_UART_GET_IT_SOURCE(&huart2, UART_IT_RXNE)){
+	  HAL_UART_Receive(&huart2, &serial_key_number[isr_pos++], 0x01, 50);
+	  if(isr_pos > 3)
+	  {
+		  isr_pos = 0;
+		  osSemaphoreRelease (RFID_received_handle);
+	  }
+	  // Clear interrupt flag
+	  __HAL_UART_CLEAR_FLAG(&huart2, UART_IT_RXNE);
 
-  // Clear interrupt flag
-  __HAL_UART_CLEAR_FLAG(&huart2, UART_IT_RXNE);
-
-  // When the serial number is received, release the binary semaphore.
-  osSemaphoreRelease (RFID_received_handle);
-
+	  // When the serial number is received, release the binary semaphore.
+//  }
 }
 
 /**

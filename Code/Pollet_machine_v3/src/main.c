@@ -43,7 +43,8 @@
 
 
 /* USER CODE END Includes */
-
+#define TRUE 1
+#define FALSE 0
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
 
@@ -69,11 +70,16 @@ osThreadId number_check_handle;
 osMessageQId myQueue01Handle;
 osSemaphoreId mySemaphoreHandle;
 osSemaphoreId RFID_received_handle;
-osSemaphoreId autorized__card_handle;
+osSemaphoreId authorized_card_handle;
 
 uint8_t button_pressed;
 uint8_t serial_key_number[4];
+uint8_t isr_pos;
 
+typedef struct {
+	uint8_t serial_number[4];
+	uint8_t money;
+} data_base;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 
@@ -151,8 +157,8 @@ int main(void)
   osSemaphoreDef(RFID_received_handle);
   RFID_received_handle = osSemaphoreCreate(osSemaphore(RFID_received_handle), 1);
 
-  osSemaphoreDef(autorized__card_handle);
-  autorized__card_handle = osSemaphoreCreate(osSemaphore(autorized__card_handle), 1);
+  osSemaphoreDef(authorized_card_handle);
+  authorized_card_handle = osSemaphoreCreate(osSemaphore(authorized_card_handle), 1);
 
 
   /* add semaphores, ... */
@@ -184,11 +190,11 @@ int main(void)
 //  myRFIDTaskHandle = osThreadCreate(osThread(myRFIDTask), NULL);
 
   /* definition and creation of servo_task */
-  osThreadDef(servo, servo_task, osPriorityIdle, 0, 128);
+  osThreadDef(servo, servo_task, osPriorityHigh, 0, 128);
   servo_task_handle = osThreadCreate(osThread(servo), NULL);
 
   /* definition and creation of myRFIDTask */
-  osThreadDef(number_task, check_number_task, osPriorityIdle, 0, 128);
+  osThreadDef(number_task, check_number_task, osPriorityNormal, 0, 128);
   number_check_handle = osThreadCreate(osThread(number_task), NULL);
 
 
@@ -501,20 +507,16 @@ static void MX_GPIO_Init(void)
 /* StartDefaultTask function */
 void StartDefaultTask(void const * argument)
 {
-  /* init code for USB_DEVICE */
-  MX_USB_DEVICE_Init();
-  /* USER CODE BEGIN 5 */
-  /* Infinite loop */
-  for(;;)
-  {
-//	if(!osSemaphoreWait(mySemaphoreHandle, osWaitForever))
-//	{
-//		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 1);
+	/* init code for USB_DEVICE */
+	MX_USB_DEVICE_Init();
+	/* USER CODE BEGIN 5 */
+	/* Infinite loop */
+	for(;;)
+	{
 //		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-//	}
-	osDelay(10);
-  }
-  /* USER CODE END 5 */ 
+		osDelay(500);
+	}
+	/* USER CODE END 5 */
 }
 
 /* StartTask02 function */
@@ -535,7 +537,7 @@ void StartTask02(void const * argument)
 	  {
 //		  if(!uxQueueMessagesWaiting(myQueue01Handle))
 //		  {
-			  p.Pulse = 1020;
+			  p.Pulse = 1120;
 			  /* Push ix to the queue */
 //			  xQueueSend(myQueue01Handle, &ix, 0);
 			  if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
@@ -606,21 +608,25 @@ void servo_task(void const * argument)
 	/* Infinite loop */
 	for(;;)
 	{
-		p.Pulse = 1120;
-		if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
+		if(!osSemaphoreWait(authorized_card_handle, osWaitForever))
 		{
-			Error_Handler();
-		}
-		HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-		osDelay(1000);
+			p.Pulse = 920;
+			if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
+			{
+				Error_Handler();
+			}
+			HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+			osDelay(500);
 
-		p.Pulse = 920;
-		if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
-		{
-			Error_Handler();
+			p.Pulse = 1120;
+			if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
+			{
+				Error_Handler();
+			}
+			HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+			osDelay(500);
 		}
-		HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-		osDelay(1000);
+		osDelay(100);
 	}
 	/* USER CODE END servo_task */
 }
@@ -673,18 +679,44 @@ void RFIDTask(void const * argument)
 
 void check_number_task(void const * argument)
 {
-	// Autorixed cards
-	uint8_t athorized_card1[4] ={0x74, 0x55, 0x9F, 0xC6};
-	uint8_t athorized_card2[4] ={0xBD, 0x1D, 0xB4, 0x43};
-
+	// Authorized cards
+	data_base user1 = {{0x74, 0x55, 0x9F, 0xC6}, 3};
+//	uint8_t authorized_card1[4] ={0x74, 0x55, 0x9F, 0xC6};
+//	uint8_t authorized_card2[4] ={0xBD, 0x1D, 0xB4, 0x43};
+	uint8_t command, release_fot, i;
+	command = 2;
+	/* Command to tag reader to read serial key of the tag */
+	HAL_UART_Transmit(&huart2, &command, 0x01, 0xfff);
+	//serial_key_number = 0;
+	isr_pos = 0;
 	for(;;)
 	{
 		if (!osSemaphoreWait(RFID_received_handle, osWaitForever)){
-
+			HAL_UART_Transmit(&huart3, &serial_key_number[0], 0x04, 50);
 			// Check the number..
-			if ( strcmp(serial_key_number, athorized_card1) | strcmp(serial_key_number, athorized_card2) ){
-				osSemaphoreRelease(autorized__card_handle);
+//			if ( strcmp(serial_key_number, athorized_card1) | strcmp(serial_key_number, athorized_card2) ){
+
+
+
+			release_fot = TRUE;
+	        i = 4;
+	        while (i--)
+	        {
+	            if (serial_key_number[i] != user1.serial_number[i])
+	                release_fot = FALSE;
+	        }
+
+	 		if(release_fot && button_pressed){
+	 			user1.money += 3;
+	 			button_pressed = 0;
+	 			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+	 		}
+	        else if(release_fot && user1.money > 0)
+	 		{
+				user1.money--;
+	 			osSemaphoreRelease(authorized_card_handle);
 			}
+	 		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
 		}
 		osDelay(250);
 	}
