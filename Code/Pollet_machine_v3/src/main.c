@@ -59,16 +59,11 @@ UART_HandleTypeDef huart3;
 DMA_HandleTypeDef hdma_usart2_rx;
 DMA_HandleTypeDef hdma_usart3_rx;
 
-osThreadId defaultTaskHandle;
-osThreadId myTask02Handle;
-osThreadId myUARTTaskHandle;
-osThreadId myButtonTaskHandle;
-osThreadId myRFIDTaskHandle;
+osThreadId red_led_task_handle;
 osThreadId servo_task_handle;
 osThreadId number_check_handle;
 
-osMessageQId myQueue01Handle;
-osSemaphoreId mySemaphoreHandle;
+osMessageQId led_queue_handle;
 osSemaphoreId RFID_received_handle;
 osSemaphoreId authorized_card_handle;
 
@@ -80,6 +75,11 @@ typedef struct {
 	uint8_t serial_number[4];
 	uint8_t money;
 } data_base;
+
+typedef struct {
+	uint8_t blinks;
+	uint16_t time;
+} red_led_control;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 
@@ -96,11 +96,7 @@ static void MX_I2C1_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_USART3_UART_Init(void);
-void StartDefaultTask(void const * argument);
-void StartTask02(void const * argument);
-void UARTTask(void const * argument);
-void ButtonTask(void const * argument);
-void RFIDTask(void const * argument);
+void red_led_task(void const * argument);
 void servo_task(void const * argument);
 void check_number_task(void const * argument);
 
@@ -151,8 +147,6 @@ int main(void)
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  osSemaphoreDef(mySemaphoreHandle);
-  mySemaphoreHandle = osSemaphoreCreate(osSemaphore(mySemaphoreHandle), 1);
 
   osSemaphoreDef(RFID_received_handle);
   RFID_received_handle = osSemaphoreCreate(osSemaphore(RFID_received_handle), 1);
@@ -170,30 +164,14 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityIdle, 0, 128);
-  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
-
-  /* definition and creation of myTask02 */
-//  osThreadDef(myTask02, StartTask02, osPriorityIdle, 0, 128);
-//  myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
-
-  /* definition and creation of myUARTTask */
-//  osThreadDef(myUARTTask, UARTTask, osPriorityIdle, 0, 128);
-//  myUARTTaskHandle = osThreadCreate(osThread(myUARTTask), NULL);
-
-  /* definition and creation of myButtonTask */
-//  osThreadDef(myButtonTask, ButtonTask, osPriorityIdle, 0, 128);
-//  myButtonTaskHandle = osThreadCreate(osThread(myButtonTask), NULL);
-
-  /* definition and creation of myRFIDTask */
-//  osThreadDef(myRFIDTask, RFIDTask, osPriorityIdle, 0, 128);
-//  myRFIDTaskHandle = osThreadCreate(osThread(myRFIDTask), NULL);
+  osThreadDef(led_task, red_led_task, osPriorityNormal, 0, 128);
+  red_led_task_handle = osThreadCreate(osThread(led_task), NULL);
 
   /* definition and creation of servo_task */
   osThreadDef(servo, servo_task, osPriorityHigh, 0, 128);
   servo_task_handle = osThreadCreate(osThread(servo), NULL);
 
-  /* definition and creation of myRFIDTask */
+  /* definition and creation of number_ask */
   osThreadDef(number_task, check_number_task, osPriorityNormal, 0, 128);
   number_check_handle = osThreadCreate(osThread(number_task), NULL);
 
@@ -203,9 +181,9 @@ int main(void)
   /* USER CODE END RTOS_THREADS */
 
   /* Create the queue(s) */
-  /* definition and creation of myQueue01 */
-  osMessageQDef(myQueue01, 16, uint16_t);
-  myQueue01Handle = osMessageCreate(osMessageQ(myQueue01), NULL);
+  /* definition and creation of led_queue */
+  osMessageQDef(Queue01, 2, red_led_control);
+  led_queue_handle = osMessageCreate(osMessageQ(Queue01), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -504,94 +482,36 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE END 4 */
 
-/* StartDefaultTask function */
-void StartDefaultTask(void const * argument)
+/* Start red_led_task function */
+void red_led_task(void const * argument)
 {
 	/* init code for USB_DEVICE */
 	MX_USB_DEVICE_Init();
-	/* USER CODE BEGIN 5 */
+	/* USER CODE BEGIN red_led_task */
+	red_led_control led = {0, 0};
+
 	/* Infinite loop */
 	for(;;)
 	{
-//		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-		osDelay(500);
+		/* Check if there is something in the queue */
+		if(uxQueueMessagesWaiting(led_queue_handle))
+		{
+			/* Start by turning the red led OFF */
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+			/* Get number of blinks and blink time from queue */
+			xQueueReceive(led_queue_handle, &led, 0);
+			/* One blink needs two times to toggle */
+			led.blinks *= 2;
+			/* Blink the red led */
+			for(uint8_t i = 0; i < led.blinks; i++)
+			{
+				HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+				osDelay(led.time);
+			}
+		}
+		osDelay(30);
 	}
-	/* USER CODE END 5 */
-}
-
-/* StartTask02 function */
-void StartTask02(void const * argument)
-{
-  /* USER CODE BEGIN StartTask02 */
-  TIM_OC_InitTypeDef p;
-  p.OCMode = TIM_OCMODE_PWM1;
-  p.Pulse = 4000;
-  p.OCPolarity = TIM_OCPOLARITY_HIGH;
-  p.OCFastMode = TIM_OCFAST_ENABLE;
-
-  /* Infinite loop */
-  for(;;)
-  {
-	  /* Fade LED up */
-	  for(uint16_t ix = 0; ix < 8000; )
-	  {
-//		  if(!uxQueueMessagesWaiting(myQueue01Handle))
-//		  {
-			  p.Pulse = 1120;
-			  /* Push ix to the queue */
-//			  xQueueSend(myQueue01Handle, &ix, 0);
-			  if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
-			   {
-				 Error_Handler();
-			   }
-			  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-			  ix += 200;
-//		  }
-		  osDelay(50);
-	  }
-	  /* Fade LED down */
-	  for(uint16_t ix = 8000; ix > 0; )
-	  {
-//		  if(!uxQueueMessagesWaiting(myQueue01Handle))
-//		  {
-			  p.Pulse = 1120;
-			  /* Push ix to the queue */
-//			  xQueueSend(myQueue01Handle, &ix, 0);
-			  if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
-			   {
-				 Error_Handler();
-			   }
-			  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-			  ix -= 200;
-//		  }
-		  osDelay(50);
-	  }
-  }
-  /* USER CODE END StartTask02 */
-}
-
-/* Start UARTTASK function */
-void UARTTask(void const * argument)
-{
-  /* USER CODE BEGIN UARTTask */
-  uint8_t message[2];
-  uint16_t value = 0;
-
-  /* Infinite loop */
-  for(;;)
-  {
-	  /* Check if there is something in the queue */
-	  if(uxQueueMessagesWaiting(myQueue01Handle))
-	  {
-		  /* Pull the value from the queue */
-		  xQueueReceive(myQueue01Handle, &value, 0);
-		  message[1] = value >> 8;
-		  message[0] = value & 0xff;
-		  HAL_UART_Transmit(&huart3, &message[0], 0x02, 0xfff);
-	  }
-	  osDelay(10);
-  }
-  /* USER CODE END UARTTask */
+	/* USER CODE END red_led_task */
 }
 
 /* Start servo_task function */
@@ -608,8 +528,10 @@ void servo_task(void const * argument)
 	/* Infinite loop */
 	for(;;)
 	{
+		/* Wait for check_number_task to release the semaphore */
 		if(!osSemaphoreWait(authorized_card_handle, osWaitForever))
 		{
+			/* Move foot in */
 			p.Pulse = 920;
 			if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
 			{
@@ -618,6 +540,7 @@ void servo_task(void const * argument)
 			HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 			osDelay(500);
 
+			/* Move foot out */
 			p.Pulse = 1120;
 			if (HAL_TIM_PWM_ConfigChannel(&htim3, &p, TIM_CHANNEL_1) != HAL_OK)
 			{
@@ -631,97 +554,82 @@ void servo_task(void const * argument)
 	/* USER CODE END servo_task */
 }
 
-/* Start ButtonTask function */
-void ButtonTask(void const * argument)
-{
-	/* USER CODE BEGIN ButtonTask */
-	/* Infinite loop */
-	for(;;)
-	{
-		/* Check if button pressed */
-		if(button_pressed)
-		{
-//			osSemaphoreRelease(mySemaphoreHandle);
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
-			button_pressed = 0;
-		}
-		osDelay(100);
-	}
-	/* USER CODE END ButtonTask */
-}
-
-/* Start RFIDTask function */
-void RFIDTask(void const * argument)
-{
-	/* USER CODE BEGIN RFIDTask */
-	uint8_t command;
-	command = 2;
-	/* Command to tag reader to read serial key of the tag */
-	HAL_UART_Transmit(&huart2, &command, 0x01, 0xfff);
-	/* Infinite loop */
-	for(;;)
-	{
-/*		if(!osSemaphoreWait(mySemaphoreHandle, osWaitForever))
-		if(__HAL_UART_GET_IT_SOURCE(&huart2, UART_IT_RXNE)){
-		HAL_UART_Receive(&huart2, &inputData, sizeof(uint8_t), 50);
-		__HAL_UART_CLEAR_FLAG(&huart2, UART_IT_RXNE);
-		} */
-
-		if(button_pressed)
-		{
-			HAL_UART_Transmit(&huart3, &serial_key_number[0], 0x04, 0xfff);
-		}
-		osDelay(50);
-	}
-	/* USER CODE END RFIDTask */
-}
-
-
+/* Start check_number_task function */
 void check_number_task(void const * argument)
 {
-	// Authorized cards
+	/* USER CODE BEGIN check_number_task */
+
+	/* Serial number for tags
+	   White RFID card	74:55:9F:C6
+	   Red TAG 			BD:1D:B4:43 */
+
+	/* Authorized cards */
 	data_base user1 = {{0x74, 0x55, 0x9F, 0xC6}, 3};
-//	uint8_t authorized_card1[4] ={0x74, 0x55, 0x9F, 0xC6};
-//	uint8_t authorized_card2[4] ={0xBD, 0x1D, 0xB4, 0x43};
-	uint8_t command, release_fot, i;
+
+	red_led_control red = {0, 0};
+	uint8_t command, release_foot, i;
+
+	/* Command to TAG reader to read serial key of the TAG */
 	command = 2;
-	/* Command to tag reader to read serial key of the tag */
 	HAL_UART_Transmit(&huart2, &command, 0x01, 0xfff);
-	//serial_key_number = 0;
+
 	isr_pos = 0;
+
 	for(;;)
 	{
-		if (!osSemaphoreWait(RFID_received_handle, osWaitForever)){
-			HAL_UART_Transmit(&huart3, &serial_key_number[0], 0x04, 50);
-			// Check the number..
-//			if ( strcmp(serial_key_number, athorized_card1) | strcmp(serial_key_number, athorized_card2) ){
-
-
-
-			release_fot = TRUE;
+		/* Wait for TAG reader to release the semaphore */
+		if (!osSemaphoreWait(RFID_received_handle, osWaitForever))
+		{
+			release_foot = TRUE;
 	        i = 4;
 	        while (i--)
 	        {
+				/* Check the number.. */
 	            if (serial_key_number[i] != user1.serial_number[i])
-	                release_fot = FALSE;
+	                release_foot = FALSE;
 	        }
 
-	 		if(release_fot && button_pressed){
-	 			user1.money += 3;
-	 			button_pressed = 0;
-	 			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-	 		}
-	        else if(release_fot && user1.money > 0)
+	        if(release_foot)
+	        {
+		 		/* Charge money */
+				if(button_pressed)
+				{
+					user1.money += 3;
+					red.blinks = 2;
+					red.time = 500;
+					xQueueSend(led_queue_handle, &red, 0);
+					button_pressed = 0;
+				}
+				/* Give token */
+				else if(user1.money > 0)
+				{
+					user1.money--;
+					osSemaphoreRelease(authorized_card_handle);
+					red.blinks = 0;
+					red.time = 100;
+					xQueueSend(led_queue_handle, &red, 0);
+				}
+				/* No money */
+				else
+		 		{
+		 			red.blinks = 1;
+		 			red.time = 1000;
+		 			xQueueSend(led_queue_handle, &red, 0);
+		 		}
+	        }
+	 		/* Wrong card number */
+	        else
 	 		{
-				user1.money--;
-	 			osSemaphoreRelease(authorized_card_handle);
-			}
-	 		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+	 			red.blinks = 3;
+	 			red.time = 250;
+	 			xQueueSend(led_queue_handle, &red, 0);
+	 		}
 		}
 		osDelay(250);
 	}
-	// Shouldn' happen
+	/* USER CODE END check_number_task */
 }
+
 /**
   * @brief  Period elapsed callback in non blocking mode
   * @note   This function is called  when TIM1 interrupt took place, inside

@@ -44,10 +44,8 @@
 extern PCD_HandleTypeDef hpcd_USB_FS;
 extern UART_HandleTypeDef huart2;
 extern UART_HandleTypeDef huart3;
-extern osThreadId number_check_handle;
 
 extern TIM_HandleTypeDef htim1;
-extern osSemaphoreId mySemaphoreHandle;
 extern osSemaphoreId RFID_received_handle;
 
 extern uint8_t button_pressed;
@@ -236,21 +234,18 @@ void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
 
-
+  /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
-//  if(__HAL_UART_GET_IT_SOURCE(&huart2, UART_IT_RXNE)){
-	  HAL_UART_Receive(&huart2, &serial_key_number[isr_pos++], 0x01, 50);
-	  if(isr_pos > 3)
-	  {
-		  isr_pos = 0;
-		  osSemaphoreRelease (RFID_received_handle);
-	  }
-	  // Clear interrupt flag
-	  __HAL_UART_CLEAR_FLAG(&huart2, UART_IT_RXNE);
-
-	  // When the serial number is received, release the binary semaphore.
-//  }
+  HAL_UART_Receive(&huart2, &serial_key_number[isr_pos++], 0x01, 50);
+  if(isr_pos > 3)
+  {
+	  isr_pos = 0;
+	  osSemaphoreRelease (RFID_received_handle);
+  }
+  /* Clear interrupt flag */
+  __HAL_UART_CLEAR_FLAG(&huart2, UART_IT_RXNE);
+  /* USER CODE END USART2_IRQn 1 */
 }
 
 /**
