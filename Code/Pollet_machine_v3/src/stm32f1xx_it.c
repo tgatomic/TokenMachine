@@ -196,6 +196,7 @@ void EXTI1_IRQHandler(void)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);
 	button_pressed = 1;
 }
 

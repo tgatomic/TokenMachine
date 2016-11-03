@@ -538,7 +538,7 @@ void servo_task(void const * argument)
 				Error_Handler();
 			}
 			HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-			osDelay(500);
+			osDelay(350);
 
 			/* Move foot out */
 			p.Pulse = 1120;
@@ -594,10 +594,11 @@ void check_number_task(void const * argument)
 		 		/* Charge money */
 				if(button_pressed)
 				{
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
 					user1.money += 3;
-					red.blinks = 2;
-					red.time = 500;
-					xQueueSend(led_queue_handle, &red, 0);
+//					red.blinks = 2;
+//					red.time = 500;
+//					xQueueSend(led_queue_handle, &red, 0);
 					button_pressed = 0;
 				}
 				/* Give token */
@@ -620,7 +621,8 @@ void check_number_task(void const * argument)
 	 		/* Wrong card number */
 	        else
 	 		{
-	 			red.blinks = 3;
+	        	HAL_UART_Transmit(&huart3, &serial_key_number[0], 0x04, 50);
+	        	red.blinks = 4;
 	 			red.time = 250;
 	 			xQueueSend(led_queue_handle, &red, 0);
 	 		}
