@@ -1,4 +1,6 @@
-src/main.o: ../src/main.c ../system/include/stm32f1xx/stm32f1xx_hal.h \
+src/main.o: ../src/main.c \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOSConfig_template.h \
+ ../system/include/stm32f1xx/stm32f1xx_hal.h \
  ../include/stm32f1xx_hal_conf.h ../include/mxconstants.h \
  ../system/include/stm32f1xx/stm32f1xx_hal_rcc.h \
  ../system/include/stm32f1xx/stm32f1xx_hal_def.h \
@@ -49,7 +51,9 @@ src/main.o: ../src/main.c ../system/include/stm32f1xx/stm32f1xx_hal.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
  ../include/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../include/usbd_conf.h
+ ../include/usbd_conf.h ../src/TWI_LCD.h
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOSConfig_template.h:
 
 ../system/include/stm32f1xx/stm32f1xx_hal.h:
 
@@ -156,3 +160,5 @@ src/main.o: ../src/main.c ../system/include/stm32f1xx/stm32f1xx_hal.h \
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 
 ../include/usbd_conf.h:
+
+../src/TWI_LCD.h:

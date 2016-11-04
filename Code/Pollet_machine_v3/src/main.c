@@ -31,9 +31,12 @@
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------*/
+#include "FreeRTOSConfig_template.h"
 #include "stm32f1xx_hal.h"
 #include "cmsis_os.h"
 #include "usb_device.h"
+#include "TWI_LCD.h"
+
 
 /* USER CODE BEGIN Includes */
 #include <assert.h>
@@ -46,6 +49,12 @@
 #define TRUE 1
 #define FALSE 0
 /* Private variables ---------------------------------------------------------*/
+
+#define ILLEGAL_CARD (1 << 0)
+#define OUT_OF_MONEY (1 << 1)
+#define CHARGING (1 << 2)
+#define TOKEN_RELEASE (1 << 3)
+
 ADC_HandleTypeDef hadc1;
 
 CRC_HandleTypeDef hcrc;
@@ -62,10 +71,16 @@ DMA_HandleTypeDef hdma_usart3_rx;
 osThreadId red_led_task_handle;
 osThreadId servo_task_handle;
 osThreadId number_check_handle;
+osThreadId display_handle;
 
 osMessageQId led_queue_handle;
+osMessageQId lcd_queue_handle;
 osSemaphoreId RFID_received_handle;
 osSemaphoreId authorized_card_handle;
+
+EventGroupHandle_t card_event_group;
+
+TimerHandle_t display_timer;
 
 uint8_t button_pressed;
 uint8_t serial_key_number[4];
@@ -99,6 +114,7 @@ static void MX_USART3_UART_Init(void);
 void red_led_task(void const * argument);
 void servo_task(void const * argument);
 void check_number_task(void const * argument);
+void display_task(void const * argument);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                 
@@ -116,7 +132,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	button_pressed = 0;
+  button_pressed = 0;
 
   /* USER CODE END 1 */
 
@@ -160,6 +176,11 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
+  display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+
+
+  /**
+
   /* USER CODE END RTOS_TIMERS */
 
   /* Create the thread(s) */
@@ -171,9 +192,13 @@ int main(void)
   osThreadDef(servo, servo_task, osPriorityHigh, 0, 128);
   servo_task_handle = osThreadCreate(osThread(servo), NULL);
 
-  /* definition and creation of number_ask */
+  /* definition and creation of number_task */
   osThreadDef(number_task, check_number_task, osPriorityNormal, 0, 128);
   number_check_handle = osThreadCreate(osThread(number_task), NULL);
+
+  /* definition and creation of display_task */
+  osThreadDef(display, display_task, osPriorityNormal, 0, 128);
+  display_handle = osThreadCreate(osThread(display), NULL);
 
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -185,9 +210,14 @@ int main(void)
   osMessageQDef(Queue01, 2, red_led_control);
   led_queue_handle = osMessageCreate(osMessageQ(Queue01), NULL);
 
+  osMessageQDef(Queue02, 2, data_base);
+  lcd_queue_handle = osMessageCreate(osMessageQ(Queue02), NULL);
+
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
+
+  card_event_group = xEventGroupCreate();
 
   /* Start scheduler */
   osKernelStart();
@@ -344,7 +374,7 @@ static void MX_TIM3_Init(void)
   }
 
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 4000;
+  sConfigOC.Pulse = 1120;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_ENABLE;
   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
@@ -525,6 +555,8 @@ void servo_task(void const * argument)
 	p.OCPolarity = TIM_OCPOLARITY_HIGH;
 	p.OCFastMode = TIM_OCFAST_ENABLE;
 
+	osSemaphoreWait(authorized_card_handle, 1000);
+
 	/* Infinite loop */
 	for(;;)
 	{
@@ -565,9 +597,12 @@ void check_number_task(void const * argument)
 
 	/* Authorized cards */
 	data_base user1 = {{0x74, 0x55, 0x9F, 0xC6}, 3};
+	data_base temp_user, junk;
 
 	red_led_control red = {0, 0};
 	uint8_t command, release_foot, i;
+
+	osSemaphoreWait(RFID_received_handle, 1000);
 
 	/* Command to TAG reader to read serial key of the TAG */
 	command = 2;
@@ -581,13 +616,20 @@ void check_number_task(void const * argument)
 		if (!osSemaphoreWait(RFID_received_handle, osWaitForever))
 		{
 			release_foot = TRUE;
-	        i = 4;
+
+	    	// Check if it is an authorized card
+	    	i = 4;
 	        while (i--)
 	        {
 				/* Check the number.. */
 	            if (serial_key_number[i] != user1.serial_number[i])
-	                release_foot = FALSE;
+	            {
+	            	temp_user.serial_number[i] = serial_key_number[i];
+	            	release_foot = FALSE;
+	            }
 	        }
+	        // Stores the money
+	        temp_user.money = user1.money;
 
 	        if(release_foot)
 	        {
@@ -596,10 +638,8 @@ void check_number_task(void const * argument)
 				{
 					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
 					user1.money += 3;
-//					red.blinks = 2;
-//					red.time = 500;
-//					xQueueSend(led_queue_handle, &red, 0);
 					button_pressed = 0;
+					xEventGroupSetBits(card_event_group, CHARGING);
 				}
 				/* Give token */
 				else if(user1.money > 0)
@@ -609,6 +649,8 @@ void check_number_task(void const * argument)
 					red.blinks = 0;
 					red.time = 100;
 					xQueueSend(led_queue_handle, &red, 0);
+					xQueueSend(lcd_queue_handle, &user1, 0);
+					xEventGroupSetBits(card_event_group, TOKEN_RELEASE);
 				}
 				/* No money */
 				else
@@ -616,6 +658,8 @@ void check_number_task(void const * argument)
 		 			red.blinks = 1;
 		 			red.time = 1000;
 		 			xQueueSend(led_queue_handle, &red, 0);
+		 			xQueueSend(lcd_queue_handle, &user1, 0);
+		 			xEventGroupSetBits(card_event_group, OUT_OF_MONEY);
 		 		}
 	        }
 	 		/* Wrong card number */
@@ -625,11 +669,138 @@ void check_number_task(void const * argument)
 	        	red.blinks = 4;
 	 			red.time = 250;
 	 			xQueueSend(led_queue_handle, &red, 0);
+	 			xQueueSend(lcd_queue_handle, &temp_user, 0);
+	 			xEventGroupSetBits(card_event_group, ILLEGAL_CARD);
 	 		}
 		}
 		osDelay(250);
 	}
 	/* USER CODE END check_number_task */
+}
+
+
+void display_task(void const * argument){
+
+	// Wait for screen to get power
+	osDelay(2000);
+	LCD_Init();
+	uint16_t event_bits = 0;
+	data_base temp_struct;
+
+	xEventGroupClearBits(card_event_group, ILLEGAL_CARD | OUT_OF_MONEY | CHARGING | TOKEN_RELEASE);
+	xTimerStart( display_timer, 250);
+
+	osDelay(1000);
+
+	for(;;){
+		// Do something smart
+
+		do {
+			osDelay(30);
+			event_bits = xEventGroupGetBits(card_event_group);
+		} while (!event_bits);
+
+		xTimerStop( display_timer, 10 );
+
+		if (event_bits & ILLEGAL_CARD )
+		{
+			if(xQueueReceive(lcd_queue_handle, &temp_struct, 1000))
+			{
+				uint8_t card_message[16] = "Nr              ";
+
+				card_message[3] = ((temp_struct.serial_number[0] & 0xF0) >> 4);
+				card_message[4] = (temp_struct.serial_number[0] & 0x0F);
+
+				card_message[6] = ((temp_struct.serial_number[1] & 0xF0) >> 4);
+				card_message[7] = (temp_struct.serial_number[1] & 0x0F);
+
+				card_message[9] = ((temp_struct.serial_number[2] & 0xF0) >> 4);
+				card_message[10] = (temp_struct.serial_number[2] & 0x0F);
+
+				card_message[12] = ((temp_struct.serial_number[3] & 0xF0) >> 4);
+				card_message[13] = (temp_struct.serial_number[3] & 0x0F);
+
+				for(int i= 3; i < 14; i++){
+						if(card_message[i] > 9){
+							card_message[i] += '7';
+						} else {
+							card_message[i] += '0';
+						}
+				}
+
+				card_message[5] = ':';
+				card_message[8] = ':';
+				card_message[11] = ':';
+
+				LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+			}
+			else
+			{
+				LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+			}
+		}
+		else if (event_bits & OUT_OF_MONEY)
+		{
+			if(xQueueReceive(lcd_queue_handle, &temp_struct, 1000))
+			{
+				uint8_t card_message[16] = "Nr              ";
+
+				card_message[3] = ((temp_struct.serial_number[0] & 0xF0) >> 4);
+				card_message[4] = (temp_struct.serial_number[0] & 0x0F);
+
+				card_message[6] = ((temp_struct.serial_number[1] & 0xF0) >> 4);
+				card_message[7] = (temp_struct.serial_number[1] & 0x0F);
+
+				card_message[9] = ((temp_struct.serial_number[2] & 0xF0) >> 4);
+				card_message[10] = (temp_struct.serial_number[2] & 0x0F);
+
+				card_message[12] = ((temp_struct.serial_number[3] & 0xF0) >> 4);
+				card_message[13] = (temp_struct.serial_number[3] & 0x0F);
+
+				for(int i= 3; i < 14; i++){
+						if(card_message[i] > 9){
+							card_message[i] += '7';
+						} else {
+							card_message[i] += '0';
+						}
+				}
+
+				card_message[5] = ':';
+				card_message[8] = ':';
+				card_message[11] = ':';
+
+				LCD_String("No money on card", 16, card_message, 16);
+			}
+			else
+			{
+				LCD_String("Out of money!   ", 16, "!               ", 16);
+			}
+		}
+		else if (event_bits & CHARGING)
+		{
+			LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+		}
+		else if (event_bits & TOKEN_RELEASE)
+		{
+			if(xQueueReceive(lcd_queue_handle, &temp_struct, 1000))
+				{
+					uint8_t card_message[16] = "You have 0 left!";
+					card_message[9] = temp_struct.money + '0';
+					LCD_String("There you go..  ", 16, card_message, 16);
+				}
+				else
+				{
+					LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+				}
+		}
+		else
+		{
+			LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+		}
+
+		xEventGroupClearBits(card_event_group, ILLEGAL_CARD | OUT_OF_MONEY | CHARGING | TOKEN_RELEASE);
+		xTimerStart( display_timer, 10);
+	}
 }
 
 /**

@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/TWI_LCD.c \
 ../src/freertos.c \
 ../src/main.c \
 ../src/stm32f1xx_hal_msp.c \
@@ -15,6 +16,7 @@ C_SRCS += \
 ../src/usbd_dfu_if.c 
 
 OBJS += \
+./src/TWI_LCD.o \
 ./src/freertos.o \
 ./src/main.o \
 ./src/stm32f1xx_hal_msp.o \
@@ -26,6 +28,7 @@ OBJS += \
 ./src/usbd_dfu_if.o 
 
 C_DEPS += \
+./src/TWI_LCD.d \
 ./src/freertos.d \
 ./src/main.d \
 ./src/stm32f1xx_hal_msp.d \

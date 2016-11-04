@@ -1,19 +1,2241 @@
-11:01:31 **** Build of configuration Debug for project Pollet_machine_v3 ****
+16:49:46 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
 make all 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:588:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:731:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:735:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:735:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:768:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:772:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:772:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:777:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:777:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:785:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:789:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:789:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:794:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:794:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:678:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:847:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:847:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
    text	   data	    bss	    dec	    hex	filename
-  29155	    344	   7732	  37231	   916f	Pollet_machine_v3.elf
+  37383	    344	   9940	  47667	   ba33	Pollet_machine_v3.elf
 Finished building: Pollet_machine_v3.siz
  
-
-11:01:37 Build Finished (took 5s.165ms)
-
-11:01:38 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+09:25:38 **** Build of configuration Debug for project Blink_simple_v2 ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Blink_simple_v2.elf"
+   text	   data	    bss	    dec	    hex	filename
+   5655	    176	    416	   6247	   1867	Blink_simple_v2.elf
+Finished building: Blink_simple_v2.siz
+ 
+09:25:41 **** Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:588:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:731:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:735:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:735:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:768:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:772:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:772:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:777:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:777:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:785:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:789:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:789:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:794:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:794:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:678:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:847:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:847:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37383	    344	   9940	  47667	   ba33	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+09:25:59 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
 make all 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
    text	   data	    bss	    dec	    hex	filename
-  29155	    344	   7732	  37231	   916f	Pollet_machine_v3.elf
+  37383	    344	   9940	  47667	   ba33	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+09:28:39 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:588:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:732:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:736:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:736:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:769:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:773:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:773:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:778:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:778:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:786:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:790:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:790:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:795:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:795:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:679:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:848:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:848:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37399	    344	   9940	  47683	   ba43	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+09:36:11 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37399	    344	   9940	  47683	   ba43	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+09:47:44 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/TWI_LCD.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/TWI_LCD.d" -MT"src/TWI_LCD.o" -c -o "src/TWI_LCD.o" "../src/TWI_LCD.c"
+../src/TWI_LCD.c: In function 'LCD_Init':
+../src/TWI_LCD.c:32:2: warning: implicit declaration of function 'osDelay' [-Wimplicit-function-declaration]
+  osDelay(5);
+  ^
+../src/TWI_LCD.c: In function 'LCD_Turn_off':
+../src/TWI_LCD.c:146:13: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("Bang!!!!        ",16, "Your dead..     ", 16);
+             ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+../src/TWI_LCD.c:146:36: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("Bang!!!!        ",16, "Your dead..     ", 16);
+                                    ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+Finished building: ../src/TWI_LCD.c
+ 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:588:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:732:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:736:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:736:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:769:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:773:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:773:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:778:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:778:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:786:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:790:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:790:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:795:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:795:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:679:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:848:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:848:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37399	    344	   9940	  47683	   ba43	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+09:57:27 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:600:18: warning: variable 'red' set but not used [-Wunused-but-set-variable]
+  red_led_control red = {0, 0};
+                  ^
+../src/main.c:588:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:732:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:736:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:736:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:769:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:773:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:773:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:778:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:778:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:786:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:790:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:790:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:795:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:795:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:679:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:848:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:848:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37307	    344	   9940	  47591	   b9e7	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+10:01:26 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:630:27: warning: unused variable 'debug' [-Wunused-variable]
+          volatile uint8_t debug = uxQueueMessagesWaiting(lcd_queue_handle);
+                           ^
+../src/main.c:588:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:735:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:739:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:739:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:772:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:776:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:776:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:781:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:781:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:789:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:793:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:793:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:798:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:798:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:682:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:851:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:851:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37431	    344	   9940	  47715	   ba63	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+10:05:29 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:588:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:738:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:742:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:742:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:775:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:779:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:779:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:784:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:784:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:792:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:796:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:796:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:801:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:801:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:685:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:854:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:854:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37447	    344	   9940	  47731	   ba73	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+10:08:40 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:588:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:736:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:740:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:740:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:773:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:777:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:777:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:782:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:782:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:790:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:794:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:794:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:799:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:799:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:683:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:852:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:852:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37443	    344	   9940	  47727	   ba6f	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+10:12:40 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:588:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:738:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:742:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:742:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:775:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:779:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:779:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:784:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:784:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:792:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:796:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:796:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:801:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:801:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:685:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:854:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:854:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37455	    344	   9940	  47739	   ba7b	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+10:14:31 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:600:23: warning: unused variable 'junk' [-Wunused-variable]
+  data_base temp_user, junk;
+                       ^
+../src/main.c:590:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:740:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:744:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:744:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:777:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:781:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:781:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:786:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:786:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:794:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:798:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:798:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:803:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:803:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:687:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:856:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:856:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37435	    344	   9940	  47719	   ba67	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+10:17:21 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/TWI_LCD.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/TWI_LCD.d" -MT"src/TWI_LCD.o" -c -o "src/TWI_LCD.o" "../src/TWI_LCD.c"
+../src/TWI_LCD.c: In function 'LCD_Init':
+../src/TWI_LCD.c:32:2: warning: implicit declaration of function 'osDelay' [-Wimplicit-function-declaration]
+  osDelay(5);
+  ^
+../src/TWI_LCD.c: In function 'LCD_Turn_off':
+../src/TWI_LCD.c:118:13: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("                ",16, "                ", 16);
+             ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+../src/TWI_LCD.c:118:36: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("                ",16, "                ", 16);
+                                    ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+Finished building: ../src/TWI_LCD.c
+ 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:590:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:740:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:744:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:744:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:777:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:781:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:781:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:786:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:786:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:794:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:798:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:798:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:803:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:803:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:687:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:856:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:856:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37443	    344	   9940	  47727	   ba6f	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+10:18:49 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:600:23: warning: unused variable 'junk' [-Wunused-variable]
+  data_base temp_user, junk;
+                       ^
+../src/main.c:590:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:739:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:743:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:743:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:776:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:780:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:780:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:785:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:785:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:793:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:797:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:797:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:802:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:802:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:686:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:855:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:855:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37427	    344	   9940	  47711	   ba5f	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+10:22:53 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/TWI_LCD.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/TWI_LCD.d" -MT"src/TWI_LCD.o" -c -o "src/TWI_LCD.o" "../src/TWI_LCD.c"
+../src/TWI_LCD.c: In function 'LCD_Init':
+../src/TWI_LCD.c:32:2: warning: implicit declaration of function 'osDelay' [-Wimplicit-function-declaration]
+  osDelay(5);
+  ^
+../src/TWI_LCD.c: In function 'LCD_Turn_off':
+../src/TWI_LCD.c:118:13: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("    Welcome     ",16, " coffeemaniac!  ", 16);
+             ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+../src/TWI_LCD.c:118:36: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("    Welcome     ",16, " coffeemaniac!  ", 16);
+                                    ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+Finished building: ../src/TWI_LCD.c
+ 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:600:23: warning: unused variable 'junk' [-Wunused-variable]
+  data_base temp_user, junk;
+                       ^
+../src/main.c:590:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:739:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:743:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:743:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:776:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:780:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:780:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:785:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:785:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:793:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:797:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:797:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:802:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:802:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:686:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:855:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:855:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37403	    344	   9940	  47687	   ba47	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+10:28:38 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/TWI_LCD.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/TWI_LCD.d" -MT"src/TWI_LCD.o" -c -o "src/TWI_LCD.o" "../src/TWI_LCD.c"
+../src/TWI_LCD.c: In function 'LCD_Init':
+../src/TWI_LCD.c:32:2: warning: implicit declaration of function 'osDelay' [-Wimplicit-function-declaration]
+  osDelay(5);
+  ^
+../src/TWI_LCD.c: In function 'LCD_Turn_off':
+../src/TWI_LCD.c:118:13: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("    Welcome     ",16, " coffeemaniac!  ", 16);
+             ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+../src/TWI_LCD.c:118:36: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("    Welcome     ",16, " coffeemaniac!  ", 16);
+                                    ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+Finished building: ../src/TWI_LCD.c
+ 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:179:70: warning: passing argument 5 of 'xTimerCreate' from incompatible pointer type [-Wincompatible-pointer-types]
+   display_timer = xTimerCreate("Timer", 4000, pdFALSE, ( void * ) 0, LCD_Turn_off);
+                                                                      ^
+In file included from ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:121:0,
+                 from ../src/main.c:36:
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:260:15: note: expected 'TimerCallbackFunction_t {aka void (*)(void *)}' but argument is of type 'void (*)(void)'
+ TimerHandle_t xTimerCreate( const char * const pcTimerName, const TickType_t xTimerPeriodInTicks, const UBaseType_t uxAutoReload, void * const pvTimerID, TimerCallbackFunction_t pxCallbackFunction ) PRIVILEGED_FUNCTION; /*lint !e971 Unqualified char types are allowed for strings and single characters only. */
+               ^
+../src/main.c:184:3: warning: "/*" within comment [-Wcomment]
+   /* USER CODE END RTOS_TIMERS */
+   ^
+../src/main.c: In function 'red_led_task':
+../src/main.c:516:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void red_led_task(void const * argument)
+                                ^
+../src/main.c: In function 'servo_task':
+../src/main.c:548:30: warning: unused parameter 'argument' [-Wunused-parameter]
+ void servo_task(void const * argument)
+                              ^
+../src/main.c: In function 'check_number_task':
+../src/main.c:600:23: warning: unused variable 'junk' [-Wunused-variable]
+  data_base temp_user, junk;
+                       ^
+../src/main.c:590:37: warning: unused parameter 'argument' [-Wunused-parameter]
+ void check_number_task(void const * argument)
+                                     ^
+../src/main.c: In function 'display_task':
+../src/main.c:735:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:739:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:739:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("ILLEGAL CARD    ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:772:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("No money on card", 16, card_message, 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:776:16: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:776:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+     LCD_String("Out of money!   ", 16, "!               ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:781:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:781:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Card is topped  ", 16, "up with 3 moneyz", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:789:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go..  ", 16, card_message, 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:793:17: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                 ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:793:40: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+      LCD_String("There you go!  ", 16, "Coffemaniac!    ", 16);
+                                        ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:798:15: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+               ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:798:39: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+    LCD_String("Error! You      ", 16, "bastardo!       ", 16);
+                                       ^
+In file included from ../src/main.c:38:0:
+../src/TWI_LCD.h:34:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems);
+      ^
+../src/main.c:682:32: warning: unused parameter 'argument' [-Wunused-parameter]
+ void display_task(void const * argument){
+                                ^
+../src/main.c: In function 'assert_failed':
+../src/main.c:851:29: warning: unused parameter 'file' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                             ^
+../src/main.c:851:44: warning: unused parameter 'line' [-Wunused-parameter]
+ void assert_failed(uint8_t* file, uint32_t line)
+                                            ^
+Finished building: ../src/main.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37403	    344	   9940	  47687	   ba47	Pollet_machine_v3.elf
+Finished building: Pollet_machine_v3.siz
+ 
+10:30:11 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+make all 
+Building file: ../src/TWI_LCD.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/TWI_LCD.d" -MT"src/TWI_LCD.o" -c -o "src/TWI_LCD.o" "../src/TWI_LCD.c"
+../src/TWI_LCD.c: In function 'LCD_Init':
+../src/TWI_LCD.c:32:2: warning: implicit declaration of function 'osDelay' [-Wimplicit-function-declaration]
+  osDelay(5);
+  ^
+../src/TWI_LCD.c: In function 'LCD_Turn_off':
+../src/TWI_LCD.c:118:13: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("    Welcome     ",16, " coffee maniac! ", 16);
+             ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+../src/TWI_LCD.c:118:36: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("    Welcome     ",16, " coffee maniac! ", 16);
+                                    ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+Finished building: ../src/TWI_LCD.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
+   text	   data	    bss	    dec	    hex	filename
+  37403	    344	   9940	  47687	   ba47	Pollet_machine_v3.elf
 Finished building: Pollet_machine_v3.siz
  

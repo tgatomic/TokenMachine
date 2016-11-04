@@ -1,11 +1,42 @@
-11:01:38 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
+10:30:11 **** Incremental Build of configuration Debug for project Pollet_machine_v3 ****
 make all 
+Building file: ../src/TWI_LCD.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -DSTM32F103xB -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1xx" -I"../system/include/cmsis/device" -I"../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3" -I"../Middlewares/ST/STM32_USB_Device_Library/Core/Inc" -I"../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc" -I"../Middlewares/Third_Party/FreeRTOS/Source/include" -I"../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS" -I"C:\Program Files (x86)\GNU Tools ARM Embedded\5.4 2016q3\arm-none-eabi\include" -std=gnu11 -MMD -MP -MF"src/TWI_LCD.d" -MT"src/TWI_LCD.o" -c -o "src/TWI_LCD.o" "../src/TWI_LCD.c"
+../src/TWI_LCD.c: In function 'LCD_Init':
+../src/TWI_LCD.c:32:2: warning: implicit declaration of function 'osDelay' [-Wimplicit-function-declaration]
+  osDelay(5);
+  ^
+../src/TWI_LCD.c: In function 'LCD_Turn_off':
+../src/TWI_LCD.c:118:13: warning: pointer targets in passing argument 1 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("    Welcome     ",16, " coffee maniac! ", 16);
+             ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+../src/TWI_LCD.c:118:36: warning: pointer targets in passing argument 3 of 'LCD_String' differ in signedness [-Wpointer-sign]
+  LCD_String("    Welcome     ",16, " coffee maniac! ", 16);
+                                    ^
+../src/TWI_LCD.c:89:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void LCD_String(uint8_t row1[],int row1_elems, uint8_t row2[], int row2_elems){
+      ^
+Finished building: ../src/TWI_LCD.c
+ 
+Building target: Pollet_machine_v3.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../idscripts" -Wl,-Map,"Pollet_machine_v3.map" --specs=nano.specs -o "Pollet_machine_v3.elf"  ./system/src/stm32f1xx/stm32f1xx_hal.o ./system/src/stm32f1xx/stm32f1xx_hal_adc.o ./system/src/stm32f1xx/stm32f1xx_hal_adc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_cortex.o ./system/src/stm32f1xx/stm32f1xx_hal_crc.o ./system/src/stm32f1xx/stm32f1xx_hal_dma.o ./system/src/stm32f1xx/stm32f1xx_hal_flash.o ./system/src/stm32f1xx/stm32f1xx_hal_flash_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio.o ./system/src/stm32f1xx/stm32f1xx_hal_gpio_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_i2c.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd.o ./system/src/stm32f1xx/stm32f1xx_hal_pcd_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_pwr.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc.o ./system/src/stm32f1xx/stm32f1xx_hal_rcc_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_tim.o ./system/src/stm32f1xx/stm32f1xx_hal_tim_ex.o ./system/src/stm32f1xx/stm32f1xx_hal_uart.o ./system/src/stm32f1xx/stm32f1xx_ll_usb.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/startup_stm32f103xb.o ./system/src/cmsis/system_stm32f1xx.o  ./src/TWI_LCD.o ./src/freertos.o ./src/main.o ./src/stm32f1xx_hal_msp.o ./src/stm32f1xx_hal_timebase_TIM.o ./src/stm32f1xx_it.o ./src/usb_device.o ./src/usbd_conf.o ./src/usbd_desc.o ./src/usbd_dfu_if.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o  ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3/port.o  ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o  ./Middlewares/Third_Party/FreeRTOS/Source/croutine.o ./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ./Middlewares/Third_Party/FreeRTOS/Source/list.o ./Middlewares/Third_Party/FreeRTOS/Source/queue.o ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o ./Middlewares/Third_Party/FreeRTOS/Source/timers.o  ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o ./Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o  ./Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.o   
+Finished building target: Pollet_machine_v3.elf
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Pollet_machine_v3.elf"  "Pollet_machine_v3.hex"
+Finished building: Pollet_machine_v3.hex
+ 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "Pollet_machine_v3.elf"
    text	   data	    bss	    dec	    hex	filename
-  29155	    344	   7732	  37231	   916f	Pollet_machine_v3.elf
+  37403	    344	   9940	  47687	   ba47	Pollet_machine_v3.elf
 Finished building: Pollet_machine_v3.siz
  
 
-11:01:39 Build Finished (took 871ms)
+10:30:14 Build Finished (took 3s.12ms)
 
