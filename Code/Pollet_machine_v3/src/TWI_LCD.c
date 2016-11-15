@@ -31,11 +31,11 @@ void LCD_Init(void){
 	//_delay_ms(DELAY_MS*5); //5 ms delay
 	osDelay(5);
 	
-	uint8_t welcome[] = {"    Welcome     "};
-	uint8_t welcome2[] = {"  coffe maniac! "};
+	uint8_t welcome[] =  {"   System is    "};
+	uint8_t welcome2[] = {"  starting up   "};
 	LCD_String(welcome,16, welcome2,16);
 	//_delay_ms(1500);
-	osDelay(1500);
+	osDelay(500);
 	
 }
 

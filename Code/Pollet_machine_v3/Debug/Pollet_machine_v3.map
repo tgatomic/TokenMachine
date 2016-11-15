@@ -6744,10 +6744,10 @@ END GROUP
 
 .inits          0x08000350       0x28
                 0x08000350                __data_regions_array_start = .
-                0x08000350        0x4 LONG 0x8009244 LOADADDR (.data)
+                0x08000350        0x4 LONG 0x8009258 LOADADDR (.data)
                 0x08000354        0x4 LONG 0x20000000 ADDR (.data)
                 0x08000358        0x4 LONG 0x20000130 (ADDR (.data) + SIZEOF (.data))
-                0x0800035c        0x4 LONG 0x8009244 LOADADDR (.data_CCMRAM)
+                0x0800035c        0x4 LONG 0x8009258 LOADADDR (.data_CCMRAM)
                 0x08000360        0x4 LONG 0x0 ADDR (.data_CCMRAM)
                 0x08000364        0x4 LONG 0x0 (ADDR (.data_CCMRAM) + SIZEOF (.data_CCMRAM))
                 0x08000368                __data_regions_array_end = .
@@ -6779,7 +6779,7 @@ END GROUP
 .flashtext
  *(.flashtext .flashtext.*)
 
-.text           0x08000378     0x8ecb
+.text           0x08000378     0x8edf
  *(.text .text.*)
  .text.HAL_Init
                 0x08000378       0x24 ./system/src/stm32f1xx/stm32f1xx_hal.o
@@ -7823,65 +7823,65 @@ END GROUP
                 0x08008f5c        0x8 ./system/src/cmsis/system_stm32f1xx.o
                 0x08008f5c                APBPrescTable
  .rodata.str1.4
-                0x08008f64       0x39 ./src/TWI_LCD.o
- *fill*         0x08008f9d        0x3 
- .rodata        0x08008fa0       0x90 ./src/main.o
+                0x08008f64       0x4d ./src/TWI_LCD.o
+ *fill*         0x08008fb1        0x3 
+ .rodata        0x08008fb4       0x90 ./src/main.o
  .rodata.str1.4
-                0x08009030      0x105 ./src/main.o
- *fill*         0x08009135        0x3 
+                0x08009044      0x105 ./src/main.o
+ *fill*         0x08009149        0x3 
  .rodata.str1.4
-                0x08009138       0x5e ./src/usbd_desc.o
- *fill*         0x08009196        0x2 
+                0x0800914c       0x5e ./src/usbd_desc.o
+ *fill*         0x080091aa        0x2 
  .rodata.str1.4
-                0x08009198       0x5d ./src/usbd_dfu_if.o
- *fill*         0x080091f5        0x3 
+                0x080091ac       0x5d ./src/usbd_dfu_if.o
+ *fill*         0x08009209        0x3 
  .rodata.str1.4
-                0x080091f8        0x5 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- *fill*         0x080091fd        0x3 
+                0x0800920c        0x5 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ *fill*         0x08009211        0x3 
  .rodata.str1.4
-                0x08009200       0x10 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
+                0x08009214       0x10 ./Middlewares/Third_Party/FreeRTOS/Source/timers.o
  .rodata.str1.1
-                0x08009210       0x11 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08009224       0x11 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .rodata.str1.1
-                0x08009221       0x22 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08009235       0x22 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
  *(vtable)
  *(.eh_frame*)
  *(.glue_7)
- .glue_7        0x08009243        0x0 linker stubs
+ .glue_7        0x08009257        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08009243        0x0 linker stubs
+ .glue_7t       0x08009257        0x0 linker stubs
 
-.vfp11_veneer   0x08009244        0x0
- .vfp11_veneer  0x08009244        0x0 linker stubs
+.vfp11_veneer   0x08009258        0x0
+ .vfp11_veneer  0x08009258        0x0 linker stubs
 
-.v4_bx          0x08009244        0x0
- .v4_bx         0x08009244        0x0 linker stubs
+.v4_bx          0x08009258        0x0
+ .v4_bx         0x08009258        0x0 linker stubs
 
-.iplt           0x08009244        0x0
- .iplt          0x08009244        0x0 ./system/src/stm32f1xx/stm32f1xx_hal.o
+.iplt           0x08009258        0x0
+ .iplt          0x08009258        0x0 ./system/src/stm32f1xx/stm32f1xx_hal.o
 
-.rel.dyn        0x08009244        0x0
- .rel.iplt      0x08009244        0x0 ./system/src/stm32f1xx/stm32f1xx_hal.o
+.rel.dyn        0x08009258        0x0
+ .rel.iplt      0x08009258        0x0 ./system/src/stm32f1xx/stm32f1xx_hal.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08009244                . = ALIGN (0x4)
-                0x08009244                __exidx_start = .
+                0x08009258                . = ALIGN (0x4)
+                0x08009258                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08009244                __exidx_end = .
-                0x08009244                . = ALIGN (0x4)
-                0x08009244                _etext = .
-                0x08009244                __etext = .
+                0x08009258                __exidx_end = .
+                0x08009258                . = ALIGN (0x4)
+                0x08009258                _etext = .
+                0x08009258                __etext = .
 
-.data_CCMRAM    0x00000000        0x0 load address 0x08009244
+.data_CCMRAM    0x00000000        0x0 load address 0x08009258
  FILL mask 0xff
  *(.data.CCMRAM .data.CCMRAM.*)
                 0x00000000                . = ALIGN (0x4)
-                0x08009244                _sidata = LOADADDR (.data)
+                0x08009258                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x130 load address 0x08009244
+.data           0x20000000      0x130 load address 0x08009258
  FILL mask 0xff
                 0x20000000                _sdata = .
                 0x20000000                __data_start__ = .
@@ -7927,7 +7927,7 @@ END GROUP
                 0x20000130                _edata = .
                 0x20000130                __data_end__ = .
 
-.igot.plt       0x20000130        0x0 load address 0x08009374
+.igot.plt       0x20000130        0x0 load address 0x08009388
  .igot.plt      0x20000130        0x0 ./system/src/stm32f1xx/stm32f1xx_hal.o
 
 .bss_CCMRAM     0x00000000        0x0
@@ -8670,15 +8670,15 @@ END GROUP
                               0x5e897 (size before relaxing)
  .debug_str     0x0009954e       0x4d ./system/src/cmsis/system_stm32f1xx.o
                               0x59ce3 (size before relaxing)
- .debug_str     0x0009959b      0x1f5 ./src/TWI_LCD.o
-                              0x92e90 (size before relaxing)
- .debug_str     0x00099790     0x652b ./src/main.o
-                              0x9a1a0 (size before relaxing)
- .debug_str     0x0009fcbb       0x24 ./src/stm32f1xx_hal_msp.o
+ .debug_str     0x0009959b      0x1a7 ./src/TWI_LCD.o
+                              0x92e8c (size before relaxing)
+ .debug_str     0x00099742     0x652b ./src/main.o
+                              0x9a19c (size before relaxing)
+ .debug_str     0x0009fc6d       0x24 ./src/stm32f1xx_hal_msp.o
                               0x936fd (size before relaxing)
- .debug_str     0x0009fcdf       0x61 ./src/stm32f1xx_hal_timebase_TIM.o
+ .debug_str     0x0009fc91       0x61 ./src/stm32f1xx_hal_timebase_TIM.o
                               0x93169 (size before relaxing)
- .debug_str     0x0009fd40      0x242 ./src/stm32f1xx_it.o
+ .debug_str     0x0009fcf2      0x290 ./src/stm32f1xx_it.o
                               0x988f1 (size before relaxing)
  .debug_str     0x0009ff82      0x8fa ./src/usb_device.o
                               0x93ced (size before relaxing)
