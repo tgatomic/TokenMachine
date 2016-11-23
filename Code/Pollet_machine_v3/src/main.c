@@ -210,7 +210,7 @@ int main(void)
   osMessageQDef(Queue01, 2, red_led_control);
   led_queue_handle = osMessageCreate(osMessageQ(Queue01), NULL);
 
-  osMessageQDef(Queue02, 2, data_base);
+  osMessageQDef(Queue02, 1, data_base);
   lcd_queue_handle = osMessageCreate(osMessageQ(Queue02), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -596,7 +596,7 @@ void check_number_task(void const * argument)
 	   Red TAG 			BD:1D:B4:43 */
 
 	/* Authorized cards */
-	data_base user1 = {{0x74, 0x55, 0x9F, 0xC6}, 3};
+	data_base user1 = {{0x74, 0x55, 0x9F, 0xC6}, 0};
 	data_base temp_user, junk;
 
 	red_led_control red = {0, 0};
