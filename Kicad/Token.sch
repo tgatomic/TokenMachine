@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:Token-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -29,6 +30,7 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:stm32
+LIBS:Token-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -227,7 +229,7 @@ $EndComp
 Wire Wire Line
 	3400 2700 3300 2700
 $Comp
-L LCD-016N002L DS?
+L LCD-016N002L-RESCUE-Token DS?
 U 1 1 581C7047
 P 1450 2750
 F 0 "DS?" H 650 3150 50  0000 C CNN

@@ -350,7 +350,7 @@ L CONN_01X04 P?
 U 1 1 581C8D98
 P 1700 3850
 F 0 "P?" H 1700 4100 50  0000 C CNN
-F 1 "RFID" V 1800 3850 50  0000 C CNN
+F 1 "UART" V 1800 3850 50  0000 C CNN
 F 2 "" H 1700 3850 50  0000 C CNN
 F 3 "" H 1700 3850 50  0000 C CNN
 	1    1700 3850
@@ -392,6 +392,16 @@ Wire Wire Line
 	2450 3900 2450 3700
 Wire Wire Line
 	2450 3700 3400 3700
-Text Notes 6800 4100 0    60   ~ 0
-Vi har 4 olika processer som kör, en för display, en för att läsa serienummer, \nen för ledlamporna poch den sista för att kolla status på det scannade kortet. \n\nNär man läser ett kort, får vi en UART ström med serienumret. \nVi släper en semafor som gör att processen för att läsa numret låses upp och \ndär skriver vi in i kö för led process samt utskrift process. \n\nFinns där pengar på kortet så öppnar vi processen för servot samt att vi \nskriver ut på skärm. \n\nFör alla andra processer så sparar vi information i en kö som vi sedan läser i \ndisplay processen och hanterar det därefter. 
+Text Notes 7150 6850 0    60   ~ 0
+Janne och Christoffer
+Text Notes 1850 6450 0    394  ~ 0
+Coffe Maniac
+Text Notes 6850 3450 0    60   ~ 0
+Tanken är att om du scannar ditt kort så ska du få ut en polett, ifall\ndu har pengar på kortet. 
+Text Notes 6800 3200 0    197  ~ 0
+Vad systemet gör
+Text Notes 6850 3850 0    197  ~ 0
+Triggervilkor\n
+Text Notes 6850 4550 0    60   ~ 0
+När man scannar sitt kort, släpps en semafor till processen för check_number_task.\n\nOm kortet är giltligt och har pengar, lägger vi in information till en kö till led_tasken, \nskiftar in bitar i eventregistret till displayen och släpper semafor till servo_tasken. \n\nEfter att displayen skrivit ut, startar vi en 4 sek timer som när den triggas, aktiverar\nen funktion. 
 $EndSCHEMATC
